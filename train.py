@@ -1,6 +1,15 @@
-import torch
 import random
+import argparse
+
+import torch
+import torch.nn as nn
+import torchvision
+import torchvision.transforms as transforms
 import numpy as np
+import torchvision.datasets as dsets
+
+from utils import mkdir, save_checkpoint, load_checkpoint, cuda, reorganize, weights_init_normal, LambdaLR
+from model import Generator, Discriminator
 
 # make training behaviour deterministic
 random.seed(1)
@@ -9,7 +18,11 @@ torch.manual_seed(1)
 torch.cuda.manual_seed(1)
 torch.backends.cudnn.deterministic=True
 
+
 class ItemPool():
+    """
+    This class represents a pool of generated images
+    """
     def __init__(self, max_size=50):
         assert (max_size > 0), 'Empty buffer or trying to create a black hole. Be careful.'
         self.max_size = max_size
@@ -23,7 +36,7 @@ class ItemPool():
                 self.data.append(element)
                 to_return.append(element)
             else:
-                if np.random.uniform(0,1) > 0.5:
+                if np.random.uniform(0, 1) > 0.5:
                     i = np.random.randint(0, self.max_size-1)
                     to_return.append(self.data[i].clone())
                     self.data[i] = element
@@ -31,6 +44,12 @@ class ItemPool():
                     to_return.append(element)
         return torch.cat(to_return)
 
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--epochs', type=int, default=200, help='number of training epochs')
+parser.add_argument('--start_epoch', type=int, default=0, help='starting epoch')
+parser.add_argument('--batch_size', type=int, default=1, help='size of the batches')
+parser.add_argument('--lr', type=float, default=0.002, help='starting epoch')
 
 epochs = 200
 start_epoch = 0
@@ -97,7 +116,7 @@ a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
 
 
-kpt_dir = '/media/external4T/a38iqbal/cycle_gan/checkpoints/apple2orange'
+ckpt_dir = '/media/external4T/a38iqbal/cycle_gan/checkpoints/apple2orange'
 mkdir(ckpt_dir)
 try:
     ckpt = load_checkpoint(ckpt_dir)
