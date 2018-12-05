@@ -1,4 +1,4 @@
-import random
+eimport random
 import argparse
 
 import torch
@@ -50,20 +50,25 @@ parser.add_argument('--epochs', type=int, default=200, help='number of training 
 parser.add_argument('--start_epoch', type=int, default=0, help='starting epoch')
 parser.add_argument('--batch_size', type=int, default=1, help='size of the batches')
 parser.add_argument('--lr', type=float, default=0.002, help='starting epoch')
+parser.add_argument('--load_size', type=int, default=286, help='load size of the images')
+parser.add_argument('--crop_size', type=int, default=256, help='crop size of the images during transformation')
+parser.add_argument('--dataset', type=str, default='apple2orange', help='dataset name')
 
-epochs = 200
-start_epoch = 0
-batch_size = 1
-lr = 0.0004
-dataset_dir = '/media/external4T/a38iqbal/cycle_gan/datasets/apple2orange'
+args = parser.parse_args()
 
-load_size = 286
-crop_size = 256
+# epochs = 200
+# start_epoch = 0
+# batch_size = 1
+# lr = 0.0002
+dataset_dir = './{}'.format(args.dataset)
+
+# load_size = 286
+# crop_size = 256
 
 transform = transforms.Compose(
     [transforms.RandomHorizontalFlip(),
-     transforms.Resize(load_size),
-     transforms.RandomCrop(crop_size),
+     transforms.Resize(args.load_size),
+     transforms.RandomCrop(args.crop_size),
      transforms.ToTensor(),
      transforms.Normalize(mean=[0.5] * 3, std=[0.5] * 3)])
 
@@ -78,8 +83,8 @@ a_train_data = dsets.ImageFolder(dataset_dirs['trainA'], transform=transform)
 b_train_data = dsets.ImageFolder(dataset_dirs['trainB'], transform=transform)
 a_test_data = dsets.ImageFolder(dataset_dirs['testA'], transform=transform)
 b_test_data = dsets.ImageFolder(dataset_dirs['testB'], transform=transform)
-a_train_loader = torch.utils.data.DataLoader(a_train_data, batch_size=batch_size, shuffle=True, num_workers=4)
-b_train_loader = torch.utils.data.DataLoader(b_train_data, batch_size=batch_size, shuffle=True, num_workers=4)
+a_train_loader = torch.utils.data.DataLoader(a_train_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
+b_train_loader = torch.utils.data.DataLoader(b_train_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
 a_test_loader = torch.utils.data.DataLoader(a_test_data, batch_size=3, shuffle=True, num_workers=4)
 b_test_loader = torch.utils.data.DataLoader(b_test_data, batch_size=3, shuffle=True, num_workers=4)
 
@@ -100,23 +105,23 @@ MSE = nn.MSELoss()
 L1 = nn.L1Loss()
 cuda([disc_a, disc_b, gen_a, gen_b])
 
-disc_a_optimizer = torch.optim.Adam(disc_a.parameters(), lr=lr, betas=(0.5, 0.999))
-disc_b_optimizer = torch.optim.Adam(disc_b.parameters(), lr=lr, betas=(0.5, 0.999))
-gen_a_optimizer = torch.optim.Adam(gen_a.parameters(), lr=lr, betas=(0.5, 0.999))
-gen_b_optimizer = torch.optim.Adam(gen_b.parameters(), lr=lr, betas=(0.5, 0.999))
+disc_a_optimizer = torch.optim.Adam(disc_a.parameters(), lr=args.lr, betas=(0.5, 0.999))
+disc_b_optimizer = torch.optim.Adam(disc_b.parameters(), lr=args.lr, betas=(0.5, 0.999))
+gen_a_optimizer = torch.optim.Adam(gen_a.parameters(), lr=args.lr, betas=(0.5, 0.999))
+gen_b_optimizer = torch.optim.Adam(gen_b.parameters(), lr=args.lr, betas=(0.5, 0.999))
 # gen_optimizer = torch.optim.Adam(itertools.chain(gen_b.parameters(), gen_a.parameters()), lr=lr, betas=(0.5, 0.999))
 
-disc_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_a_optimizer, lr_lambda=LambdaLR(epochs, 0, 100).step)
-disc_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_b_optimizer, lr_lambda=LambdaLR(epochs, 0, 100).step)
-gen_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_a_optimizer, lr_lambda=LambdaLR(epochs, 0, 100).step)
-gen_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_b_optimizer, lr_lambda=LambdaLR(epochs, 0, 100).step)
+disc_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_a_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
+disc_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_b_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
+gen_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_a_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
+gen_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_b_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
 # gen_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_optimizer, lr_lambda=LambdaLR(epochs, 0, 100).step)
 
 a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
 
 
-ckpt_dir = '/media/external4T/a38iqbal/cycle_gan/checkpoints/apple2orange'
+ckpt_dir = './checkpoints/{}'.format(args.dataset)
 mkdir(ckpt_dir)
 try:
     ckpt = load_checkpoint(ckpt_dir)
@@ -142,7 +147,7 @@ a_test_real, b_test_real = cuda([a_test_real, b_test_real])\
 
 
 # train
-for epoch in range(start_epoch, epochs):
+for epoch in range(start_epoch, args.epochs):
     for i, ((a_train_real, _), (b_train_real, _)) in enumerate(zip(a_train_loader, b_train_loader)):
         step = epoch * min(len(a_train_loader), len(b_train_loader)) + i + 1
 
@@ -248,7 +253,7 @@ for epoch in range(start_epoch, epochs):
                              b_test_real, a_test_fake, b_test_cycle],
                             dim=0).data / 2.0 + 0.5
 
-            save_dir = '/media/external4T/a38iqbal/cycle_gan/sample_images/apple2orange'
+            save_dir = './sample_images/{}'.format(args.dataset)
             mkdir(save_dir)
             torchvision.utils.save_image(pic,
                                          '{}/Epoch_({})_({}of{}).jpg'.format(save_dir,
