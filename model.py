@@ -1,3 +1,6 @@
+import torch.nn as nn
+
+
 def conv_general(input_dim, output_dim, kernel_size, stride, padding=0,
                  norm=nn.InstanceNorm2d, normalize=True, activate=True, relu_factor=0):
     ops = list()

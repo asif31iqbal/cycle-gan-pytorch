@@ -1,4 +1,4 @@
-eimport random
+import random
 import argparse
 
 import torch
