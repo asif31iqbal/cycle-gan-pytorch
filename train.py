@@ -141,8 +141,8 @@ except:
     start_epoch = 0
 
 
-a_test_real = torch.tensor(iter(a_test_loader).next()[0], requires_grd=False)
-b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grd=False)
+a_test_real = torch.tensor(iter(a_test_loader).next()[0], requires_grad=False)
+b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grad=False)
 a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
 history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'total_gen_loss': [], 'disc_loss': []}
