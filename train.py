@@ -154,7 +154,7 @@ for epoch in range(start_epoch, args.epochs):
     history['identity_loss'].append([])
     history['gen_loss_total'].append([])
     history['disc_loss'].append([])
-    
+
     for i, ((a_train_real, _), (b_train_real, _)) in enumerate(zip(a_train_loader, b_train_loader)):
         step = epoch * min(len(a_train_loader), len(b_train_loader)) + i + 1
 
@@ -167,7 +167,7 @@ for epoch in range(start_epoch, args.epochs):
         a_train_fake = gen_a(b_train_real)
         b_train_fake = gen_b(a_train_real)
 
-        if args.dataset == 'summer2winter':
+        if args.dataset == 'summer2winter_yosemite':
             # real to real
             a_train_identity = gen_a(a_train_real)
             b_train_identity = gen_b(b_train_real)
