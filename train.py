@@ -1,4 +1,5 @@
 import random
+import pickle
 import argparse
 
 import torch
@@ -144,11 +145,12 @@ a_test_real = torch.tensor(iter(a_test_loader).next()[0], requires_grd=False)
 b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grd=False)
 a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
-history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'disc_loss': []}
+history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'total_gen_loss': [], 'disc_loss': []}
 
 history['gen_loss'].append([])
 history['cyclic_loss'].append([])
 history['identity_loss'].append([])
+history['total_gen_loss'].append([])
 history['disc_loss'].append([])
 
 # train
@@ -252,6 +254,7 @@ for epoch in range(start_epoch, args.epochs):
         history['gen_loss'][epoch].append(gen_loss)
         history['cyclic_loss'][epoch].append(cycle_loss)
         history['identity_loss'][epoch].append(identity_loss)
+        history['gen_loss_total'][epoch].append(train_loss_gen)
         history['disc_loss'][epoch].append(gen_loss)
         
         if (i + 1) % 100 == 0:
@@ -268,7 +271,7 @@ for epoch in range(start_epoch, args.epochs):
                              b_test_real, a_test_fake, b_test_cycle],
                             dim=0).data / 2.0 + 0.5
 
-            save_dir = './sample_images/{}'.format(args.dataset)
+            save_dir = '{}/sample_images/{}'.format(args.root_dir, args.dataset)
             mkdir(save_dir)
             torchvision.utils.save_image(pic,
                                          '{}/Epoch_({})_({}of{}).jpg'.format(save_dir,
@@ -313,3 +316,6 @@ for epoch in range(start_epoch, args.epochs):
     gen_a_lr_scheduler.step()
     gen_b_lr_scheduler.step()
 #     gen_lr_scheduler.step()
+
+with open('{}/history/{}/history.pkl'.format(args.root_dir, args.dataset)) as f:
+    pickle.dump(history, f)
