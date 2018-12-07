@@ -150,7 +150,7 @@ history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'total_gen_lo
 history['gen_loss'].append([])
 history['cyclic_loss'].append([])
 history['identity_loss'].append([])
-history['total_gen_loss'].append([])
+history['gen_loss_total'].append([])
 history['disc_loss'].append([])
 
 # train
