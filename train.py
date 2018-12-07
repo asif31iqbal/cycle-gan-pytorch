@@ -53,6 +53,7 @@ parser.add_argument('--lr', type=float, default=0.002, help='starting epoch')
 parser.add_argument('--load_size', type=int, default=286, help='load size of the images')
 parser.add_argument('--crop_size', type=int, default=256, help='crop size of the images during transformation')
 parser.add_argument('--dataset', type=str, default='apple2orange', help='dataset name')
+parser.add_argument('--root_dir', type=str, default='/media/external4T/a38iqbal/cycle_gan', help='dataset name')
 
 args = parser.parse_args()
 
@@ -60,7 +61,8 @@ args = parser.parse_args()
 # start_epoch = 0
 # batch_size = 1
 # lr = 0.0002
-dataset_dir = './{}'.format(args.dataset)
+dataset_dir = '{}/datasets/{}'.format(args.root_dir, args.dataset)
+dataset_dirs = reorganize(dataset_dir)
 
 # load_size = 286
 # crop_size = 256
@@ -78,16 +80,14 @@ transform = transforms.Compose(
 #                 transforms.ToTensor(),
 #                 transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5)) ])
 
-dataset_dirs = reorganize(dataset_dir)
 a_train_data = dsets.ImageFolder(dataset_dirs['trainA'], transform=transform)
 b_train_data = dsets.ImageFolder(dataset_dirs['trainB'], transform=transform)
 a_test_data = dsets.ImageFolder(dataset_dirs['testA'], transform=transform)
 b_test_data = dsets.ImageFolder(dataset_dirs['testB'], transform=transform)
 a_train_loader = torch.utils.data.DataLoader(a_train_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
 b_train_loader = torch.utils.data.DataLoader(b_train_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
-a_test_loader = torch.utils.data.DataLoader(a_test_data, batch_size=3, shuffle=True, num_workers=4)
-b_test_loader = torch.utils.data.DataLoader(b_test_data, batch_size=3, shuffle=True, num_workers=4)
-
+a_test_loader = torch.utils.data.DataLoader(a_test_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
+b_test_loader = torch.utils.data.DataLoader(b_test_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
 
 
 disc_a = Discriminator()
@@ -121,7 +121,7 @@ a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
 
 
-ckpt_dir = './checkpoints/{}'.format(args.dataset)
+ckpt_dir = '{}/checkpoints/{}'.format(args.root_dir, args.dataset)
 mkdir(ckpt_dir)
 try:
     ckpt = load_checkpoint(ckpt_dir)
@@ -140,11 +140,16 @@ except:
     start_epoch = 0
 
 
-with torch.no_grad():
-    a_test_real = torch.autograd.Variable(iter(a_test_loader).next()[0])
-    b_test_real = torch.autograd.Variable(iter(b_test_loader).next()[0])
-a_test_real, b_test_real = cuda([a_test_real, b_test_real])\
+a_test_real = torch.tensor(iter(a_test_loader).next()[0], requires_grd=False)
+b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grd=False)
+a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
+history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'disc_loss': []}
+
+history['gen_loss'].append([])
+history['cyclic_loss'].append([])
+history['identity_loss'].append([])
+history['disc_loss'].append([])
 
 # train
 for epoch in range(start_epoch, args.epochs):
@@ -160,9 +165,10 @@ for epoch in range(start_epoch, args.epochs):
         a_train_fake = gen_a(b_train_real)
         b_train_fake = gen_b(a_train_real)
 
-        #         # real to real
-        #         a_train_identity = gen_a(a_train_real)
-        #         b_train_identity = gen_b(b_train_real)
+        if args.dataset == 'summer2winter':
+            # real to real
+            a_train_identity = gen_a(a_train_real)
+            b_train_identity = gen_b(b_train_real)
 
         a_train_cycle = gen_a(b_train_fake)
         b_train_cycle = gen_b(a_train_fake)
@@ -175,20 +181,24 @@ for epoch in range(start_epoch, args.epochs):
         a_train_loss_gen = MSE(a_train_fake_disc, real_label)
         b_train_loss_gen = MSE(b_train_fake_disc, real_label)
 
-        # identity loss
-        #         a_train_loss_identity = L1(a_train_identity, a_train_real)
-        #         b_train_loss_identity = L1(b_train_identity, b_train_real)
+        if args.dataset == 'summer2winter':
+            # identity loss
+            a_train_loss_identity = L1(a_train_identity, a_train_real)
+            b_train_loss_identity = L1(b_train_identity, b_train_real)
+        else:
+            a_train_loss_identity = 0.0
+            b_train_loss_identity = 0.0
 
         # cyclic loss
         a_train_loss_cycle = L1(a_train_cycle, a_train_real)
         b_train_loss_cycle = L1(b_train_cycle, b_train_real)
 
         gen_loss = a_train_loss_gen + b_train_loss_gen
-        identity_loss = 0  # 5.0 * (a_train_loss_identity + b_train_loss_identity)
+        identity_loss = 5.0 * (a_train_loss_identity + b_train_loss_identity)
         cycle_loss = 5.0 * (a_train_loss_cycle + b_train_loss_cycle)
 
-        #         train_loss_gen = gen_loss + identity_loss + cycle_loss
-        train_loss_gen = gen_loss + cycle_loss
+        train_loss_gen = gen_loss + identity_loss + cycle_loss
+        # train_loss_gen = gen_loss + cycle_loss
 
         # generator backprop
         gen_a.zero_grad()
@@ -239,6 +249,11 @@ for epoch in range(start_epoch, args.epochs):
                   % (epoch, i + 1, min(len(a_train_loader), len(b_train_loader)),
                      gen_loss, identity_loss, cycle_loss, train_loss_gen, a_train_loss_disc, b_train_loss_disc))
 
+        history['gen_loss'][epoch].append(gen_loss)
+        history['cyclic_loss'][epoch].append(cycle_loss)
+        history['identity_loss'][epoch].append(identity_loss)
+        history['disc_loss'][epoch].append(gen_loss)
+        
         if (i + 1) % 100 == 0:
             gen_a.eval()
             gen_b.eval()

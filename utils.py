@@ -36,6 +36,8 @@ def save_checkpoint(state, save_path, is_best=False, max_keep=None):
     save_dir = os.path.dirname(save_path)
     list_path = os.path.join(save_dir, 'latest_checkpoint')
 
+    absolute_latest_path = os.path.join(save_dir, 'latest_checkpoint')
+
     save_path = os.path.basename(save_path)
     if os.path.exists(list_path):
         with open(list_path) as f:
@@ -55,6 +57,9 @@ def save_checkpoint(state, save_path, is_best=False, max_keep=None):
 
     with open(list_path, 'w') as f:
         f.writelines(ckpt_list)
+
+    with open(absolute_latest_path, 'w') as f:
+        f.writeline(save_path)
 
     # copy best
     if is_best:
