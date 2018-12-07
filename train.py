@@ -147,14 +147,14 @@ a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
 history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'gen_loss_total': [], 'disc_loss': []}
 
-history['gen_loss'].append([])
-history['cyclic_loss'].append([])
-history['identity_loss'].append([])
-history['gen_loss_total'].append([])
-history['disc_loss'].append([])
-
 # train
 for epoch in range(start_epoch, args.epochs):
+    history['gen_loss'].append([])
+    history['cyclic_loss'].append([])
+    history['identity_loss'].append([])
+    history['gen_loss_total'].append([])
+    history['disc_loss'].append([])
+    
     for i, ((a_train_real, _), (b_train_real, _)) in enumerate(zip(a_train_loader, b_train_loader)):
         step = epoch * min(len(a_train_loader), len(b_train_loader)) + i + 1
 
