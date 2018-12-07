@@ -36,8 +36,6 @@ def save_checkpoint(state, save_path, is_best=False, max_keep=None):
     save_dir = os.path.dirname(save_path)
     list_path = os.path.join(save_dir, 'latest_checkpoint')
 
-    absolute_latest_path = os.path.join(save_dir, 'latest_checkpoint')
-
     save_path = os.path.basename(save_path)
     if os.path.exists(list_path):
         with open(list_path) as f:
@@ -58,9 +56,6 @@ def save_checkpoint(state, save_path, is_best=False, max_keep=None):
     with open(list_path, 'w') as f:
         f.writelines(ckpt_list)
 
-    with open(absolute_latest_path, 'w') as f:
-        f.write(save_path)
-
     # copy best
     if is_best:
         shutil.copyfile(save_path, os.path.join(save_dir, 'best_model.ckpt'))
@@ -74,6 +69,7 @@ def save_checkpoint_per_epoch(state, save_path, epoch, max_keep=1, is_best=False
     # deal with max_keep
     save_dir = os.path.dirname(save_path)
     list_path = os.path.join(save_dir, 'latest_checkpoint_epoch_{}'.format(str(epoch)))
+    absolute_latest_path = os.path.join(save_dir, 'latest_checkpoint')
 
     save_path = os.path.basename(save_path)
     if os.path.exists(list_path):
@@ -92,6 +88,9 @@ def save_checkpoint_per_epoch(state, save_path, epoch, max_keep=1, is_best=False
 
     with open(list_path, 'w') as f:
         f.writelines(ckpt_list)
+
+    with open(absolute_latest_path, 'w') as f:
+        f.write(save_path)
 
     # copy best
     if is_best:

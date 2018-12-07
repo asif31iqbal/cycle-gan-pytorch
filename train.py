@@ -9,7 +9,8 @@ import torchvision.transforms as transforms
 import numpy as np
 import torchvision.datasets as dsets
 
-from utils import mkdir, save_checkpoint, load_checkpoint, cuda, reorganize, weights_init_normal, LambdaLR
+from utils import mkdir, save_checkpoint, load_checkpoint, cuda, reorganize, weights_init_normal, LambdaLR, \
+    sav
 from model import Generator, Discriminator
 
 # make training behaviour deterministic
@@ -17,7 +18,7 @@ random.seed(1)
 np.random.seed(1)
 torch.manual_seed(1)
 torch.cuda.manual_seed(1)
-torch.backends.cudnn.deterministic=True
+torch.backends.cudnn.deterministic = True
 
 
 class ItemPool():
@@ -50,6 +51,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=200, help='number of training epochs')
 parser.add_argument('--start_epoch', type=int, default=0, help='starting epoch')
 parser.add_argument('--batch_size', type=int, default=1, help='size of the batches')
+parser.add_argument('--test_batch_size', type=int, default=3, help='size of the batches')
 parser.add_argument('--lr', type=float, default=0.002, help='starting epoch')
 parser.add_argument('--load_size', type=int, default=286, help='load size of the images')
 parser.add_argument('--crop_size', type=int, default=256, help='crop size of the images during transformation')
@@ -68,12 +70,15 @@ dataset_dirs = reorganize(dataset_dir)
 # load_size = 286
 # crop_size = 256
 
-transform = transforms.Compose(
-    [transforms.RandomHorizontalFlip(),
-     transforms.Resize(args.load_size),
+transform = [transforms.Resize(args.load_size),
      transforms.RandomCrop(args.crop_size),
      transforms.ToTensor(),
-     transforms.Normalize(mean=[0.5] * 3, std=[0.5] * 3)])
+     transforms.Normalize(mean=[0.5] * 3, std=[0.5] * 3)]
+
+if args.dataset != 'arial2times':
+    transform.insert(0, transforms.RandomHorizontalFlip())
+
+transform = transforms.Compose(transform)
 
 # transform = transforms.Compose([ transforms.Resize(int(crop_size*1.12), Image.BICUBIC),
 #                 transforms.RandomCrop(crop_size),
@@ -87,8 +92,8 @@ a_test_data = dsets.ImageFolder(dataset_dirs['testA'], transform=transform)
 b_test_data = dsets.ImageFolder(dataset_dirs['testB'], transform=transform)
 a_train_loader = torch.utils.data.DataLoader(a_train_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
 b_train_loader = torch.utils.data.DataLoader(b_train_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
-a_test_loader = torch.utils.data.DataLoader(a_test_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
-b_test_loader = torch.utils.data.DataLoader(b_test_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
+a_test_loader = torch.utils.data.DataLoader(a_test_data, batch_size=args.test_batch_size, shuffle=True, num_workers=4)
+b_test_loader = torch.utils.data.DataLoader(b_test_data, batch_size=args.test_batch_size, shuffle=True, num_workers=4)
 
 
 disc_a = Discriminator()
@@ -281,7 +286,22 @@ for epoch in range(start_epoch, args.epochs):
                                                                                  len(b_train_loader))),
                                          nrow=3)
 
-            save_checkpoint({'epoch': epoch + 1,
+            # save_checkpoint({'epoch': epoch + 1,
+            #                  'disc_a': disc_a.state_dict(),
+            #                  'disc_b': disc_a.state_dict(),
+            #                  'gen_a': gen_a.state_dict(),
+            #                  'gen_b': gen_b.state_dict(),
+            #                  'disc_a_optimizer': disc_a_optimizer.state_dict(),
+            #                  'disc_b_optimizer': disc_b_optimizer.state_dict(),
+            #                  'gen_a_optimizer': gen_a_optimizer.state_dict(),
+            #                  'gen_b_optimizer': gen_b_optimizer.state_dict()},
+            #                 '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
+            #                 max_keep=2)
+
+            save_checkpoint_per_epoch({'epoch': epoch + 1,
+                             'gen_loss': gen_loss,
+                             'cycle_loss': cycle_loss,
+                             'disc_loss': a_train_loss_disc + b_train_loss_disc,
                              'disc_a': disc_a.state_dict(),
                              'disc_b': disc_a.state_dict(),
                              'gen_a': gen_a.state_dict(),
@@ -290,23 +310,8 @@ for epoch in range(start_epoch, args.epochs):
                              'disc_b_optimizer': disc_b_optimizer.state_dict(),
                              'gen_a_optimizer': gen_a_optimizer.state_dict(),
                              'gen_b_optimizer': gen_b_optimizer.state_dict()},
-                            '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
-                            max_keep=2)
-
-    #                 save_checkpoint_per_epoch({'epoch': epoch + 1,
-    #                                  'gen_loss': gen_loss,
-    #                                  'cycle_loss': cycle_loss,
-    #                                  'disc_loss': a_train_loss_disc + b_train_loss_disc,
-    #                                  'disc_a': disc_a.state_dict(),
-    #                                  'disc_b': disc_a.state_dict(),
-    #                                  'gen_a': gen_a.state_dict(),
-    #                                  'gen_b': gen_b.state_dict(),
-    #                                  'disc_a_optimizer': disc_a_optimizer.state_dict(),
-    #                                  'disc_b_optimizer': disc_b_optimizer.state_dict(),
-    #                                  'gen_a_optimizer': gen_a_optimizer.state_dict(),
-    #                                  'gen_b_optimizer': gen_b_optimizer.state_dict()},
-    #                                  '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
-    #                                  epoch + 1)
+                             '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
+                             epoch + 1)
 
     #         break
 
