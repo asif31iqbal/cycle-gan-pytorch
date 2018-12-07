@@ -59,7 +59,7 @@ def save_checkpoint(state, save_path, is_best=False, max_keep=None):
         f.writelines(ckpt_list)
 
     with open(absolute_latest_path, 'w') as f:
-        f.writeline(save_path)
+        f.write(save_path)
 
     # copy best
     if is_best:
