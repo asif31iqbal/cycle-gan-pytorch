@@ -10,7 +10,7 @@ import numpy as np
 import torchvision.datasets as dsets
 
 from utils import mkdir, save_checkpoint, load_checkpoint, cuda, reorganize, weights_init_normal, LambdaLR, \
-    sav
+    save_checkpoint_per_epoch
 from model import Generator, Discriminator
 
 # make training behaviour deterministic
