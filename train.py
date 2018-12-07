@@ -183,7 +183,7 @@ for epoch in range(start_epoch, args.epochs):
         a_train_loss_gen = MSE(a_train_fake_disc, real_label)
         b_train_loss_gen = MSE(b_train_fake_disc, real_label)
 
-        if args.dataset == 'summer2winter':
+        if args.dataset == 'summer2winter_yosemite':
             # identity loss
             a_train_loss_identity = L1(a_train_identity, a_train_real)
             b_train_loss_identity = L1(b_train_identity, b_train_real)
