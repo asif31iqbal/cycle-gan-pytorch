@@ -14,11 +14,11 @@ from utils import mkdir, save_checkpoint, load_checkpoint, cuda, reorganize, wei
 from model import Generator, Discriminator
 
 # make training behaviour deterministic
-random.seed(1)
-np.random.seed(1)
-torch.manual_seed(1)
-torch.cuda.manual_seed(1)
-torch.backends.cudnn.deterministic = True
+# random.seed(1)
+# np.random.seed(1)
+# torch.manual_seed(1)
+# torch.cuda.manual_seed(1)
+# torch.backends.cudnn.deterministic = True
 
 
 class ItemPool():
@@ -52,11 +52,14 @@ parser.add_argument('--epochs', type=int, default=200, help='number of training 
 parser.add_argument('--start_epoch', type=int, default=0, help='starting epoch')
 parser.add_argument('--batch_size', type=int, default=1, help='size of the batches')
 parser.add_argument('--test_batch_size', type=int, default=3, help='size of the batches')
-parser.add_argument('--lr', type=float, default=0.002, help='starting epoch')
+parser.add_argument('--lr', type=float, default=0.0002, help='starting epoch')
 parser.add_argument('--load_size', type=int, default=286, help='load size of the images')
 parser.add_argument('--crop_size', type=int, default=256, help='crop size of the images during transformation')
 parser.add_argument('--dataset', type=str, default='apple2orange', help='dataset name')
 parser.add_argument('--root_dir', type=str, default='/media/external4T/a38iqbal/cycle_gan', help='dataset name')
+parser.add_argument('--cycle_loss_lambda', type=float, default=10.0, help='cycle loss multiplier constant')
+parser.add_argument('--identity_loss_lambda', type=float, default=5.0, help='cycle loss multiplier constant')
+
 
 args = parser.parse_args()
 
@@ -115,13 +118,11 @@ disc_a_optimizer = torch.optim.Adam(disc_a.parameters(), lr=args.lr, betas=(0.5,
 disc_b_optimizer = torch.optim.Adam(disc_b.parameters(), lr=args.lr, betas=(0.5, 0.999))
 gen_a_optimizer = torch.optim.Adam(gen_a.parameters(), lr=args.lr, betas=(0.5, 0.999))
 gen_b_optimizer = torch.optim.Adam(gen_b.parameters(), lr=args.lr, betas=(0.5, 0.999))
-# gen_optimizer = torch.optim.Adam(itertools.chain(gen_b.parameters(), gen_a.parameters()), lr=lr, betas=(0.5, 0.999))
 
 disc_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_a_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
 disc_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_b_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
 gen_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_a_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
 gen_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_b_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
-# gen_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_optimizer, lr_lambda=LambdaLR(epochs, 0, 100).step)
 
 a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
@@ -140,7 +141,6 @@ try:
     disc_b_optimizer.load_state_dict(ckpt['disc_b_optimizer'])
     gen_a_optimizer.load_state_dict(ckpt['gen_a_optimizer'])
     gen_b_optimizer.load_state_dict(ckpt['gen_b_optimizer'])
-#     gen_optimizer.load_state_dict(ckpt['gen_optimizer'])
 except:
     print(' [*] No checkpoint!')
     start_epoch = 0
@@ -201,11 +201,13 @@ for epoch in range(start_epoch, args.epochs):
         b_train_loss_cycle = L1(b_train_cycle, b_train_real)
 
         gen_loss = a_train_loss_gen + b_train_loss_gen
-        identity_loss = 5.0 * (a_train_loss_identity + b_train_loss_identity)
-        cycle_loss = 5.0 * (a_train_loss_cycle + b_train_loss_cycle)
+        identity_loss = args.identity_loss_lambda * (a_train_loss_identity + b_train_loss_identity)
+        cycle_loss = args.cycle_loss_lambda * (a_train_loss_cycle + b_train_loss_cycle)
 
-        train_loss_gen = gen_loss + identity_loss + cycle_loss
-        # train_loss_gen = gen_loss + cycle_loss
+        if args.dataset == 'summer2winter_yosemite':
+            train_loss_gen = gen_loss + identity_loss + cycle_loss
+        else:
+            train_loss_gen = gen_loss + cycle_loss
 
         # generator backprop
         gen_a.zero_grad()
@@ -215,7 +217,6 @@ for epoch in range(start_epoch, args.epochs):
         train_loss_gen.backward()
         gen_a_optimizer.step()
         gen_b_optimizer.step()
-        #         gen_optimizer.step()
 
         a_train_fake = torch.Tensor(a_fake_pool(a_train_fake.detach().cpu()))
         b_train_fake = torch.Tensor(b_fake_pool(b_train_fake.detach().cpu()))
@@ -299,19 +300,19 @@ for epoch in range(start_epoch, args.epochs):
             #                 max_keep=2)
 
             save_checkpoint_per_epoch({'epoch': epoch + 1,
-                             'gen_loss': gen_loss,
-                             'cycle_loss': cycle_loss,
-                             'disc_loss': a_train_loss_disc + b_train_loss_disc,
-                             'disc_a': disc_a.state_dict(),
-                             'disc_b': disc_a.state_dict(),
-                             'gen_a': gen_a.state_dict(),
-                             'gen_b': gen_b.state_dict(),
-                             'disc_a_optimizer': disc_a_optimizer.state_dict(),
-                             'disc_b_optimizer': disc_b_optimizer.state_dict(),
-                             'gen_a_optimizer': gen_a_optimizer.state_dict(),
-                             'gen_b_optimizer': gen_b_optimizer.state_dict()},
-                             '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
-                             epoch + 1)
+                                         'gen_loss': gen_loss,
+                                         'cycle_loss': cycle_loss,
+                                         'disc_loss': a_train_loss_disc + b_train_loss_disc,
+                                         'disc_a': disc_a.state_dict(),
+                                         'disc_b': disc_a.state_dict(),
+                                         'gen_a': gen_a.state_dict(),
+                                         'gen_b': gen_b.state_dict(),
+                                         'disc_a_optimizer': disc_a_optimizer.state_dict(),
+                                         'disc_b_optimizer': disc_b_optimizer.state_dict(),
+                                         'gen_a_optimizer': gen_a_optimizer.state_dict(),
+                                         'gen_b_optimizer': gen_b_optimizer.state_dict()},
+                                         '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
+                                         epoch + 1)
 
     #         break
 
@@ -320,7 +321,6 @@ for epoch in range(start_epoch, args.epochs):
     disc_b_lr_scheduler.step()
     gen_a_lr_scheduler.step()
     gen_b_lr_scheduler.step()
-#     gen_lr_scheduler.step()
 
 with open('{}/history/{}/history.pkl'.format(args.root_dir, args.dataset)) as f:
     pickle.dump(history, f)
