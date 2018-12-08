@@ -49,6 +49,7 @@ class ItemPool():
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--epochs', type=int, default=200, help='number of training epochs')
+parser.add_argument('--constant_lr_epochs', type=int, default=100, help='number of training epochs')
 parser.add_argument('--start_epoch', type=int, default=0, help='starting epoch')
 parser.add_argument('--batch_size', type=int, default=1, help='size of the batches')
 parser.add_argument('--test_batch_size', type=int, default=3, help='size of the batches')
@@ -119,10 +120,18 @@ disc_b_optimizer = torch.optim.Adam(disc_b.parameters(), lr=args.lr, betas=(0.5,
 gen_a_optimizer = torch.optim.Adam(gen_a.parameters(), lr=args.lr, betas=(0.5, 0.999))
 gen_b_optimizer = torch.optim.Adam(gen_b.parameters(), lr=args.lr, betas=(0.5, 0.999))
 
-disc_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_a_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
-disc_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_b_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
-gen_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_a_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
-gen_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_b_optimizer, lr_lambda=LambdaLR(args.epochs, 0, 100).step)
+disc_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_a_optimizer,
+                                                        lr_lambda=LambdaLR(args.epochs, 0,
+                                                                           args.constant_lr_epochs).step)
+disc_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(disc_b_optimizer,
+                                                        lr_lambda=LambdaLR(args.epochs, 0,
+                                                                           args.constant_lr_epochs).step)
+gen_a_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_a_optimizer,
+                                                       lr_lambda=LambdaLR(args.epochs, 0,
+                                                                          args.constant_lr_epochs).step)
+gen_b_lr_scheduler = torch.optim.lr_scheduler.LambdaLR(gen_b_optimizer,
+                                                       lr_lambda=LambdaLR(args.epochs, 0,
+                                                                          args.constant_lr_epochs).step)
 
 a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
