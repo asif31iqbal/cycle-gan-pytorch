@@ -111,7 +111,7 @@ a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
 
 
-ckpt_dir = '{}/checkpoints/{}'.format(args.root_dir, args.dataset)
+ckpt_dir = '{}/checkpoints/{}/lr004'.format(args.root_dir, args.dataset)
 mkdir(ckpt_dir)
 try:
     ckpt = load_checkpoint(ckpt_dir)
@@ -295,7 +295,7 @@ for epoch in range(start_epoch, args.epochs):
                                          'disc_b_optimizer': disc_b_optimizer.state_dict(),
                                          'gen_a_optimizer': gen_a_optimizer.state_dict(),
                                          'gen_b_optimizer': gen_b_optimizer.state_dict()},
-                                         '{}/lr004/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
+                                         '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
                                          epoch + 1)
 
     #         break
