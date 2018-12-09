@@ -21,9 +21,6 @@ transform = [transforms.Resize(args.load_size),
      transforms.ToTensor(),
      transforms.Normalize(mean=[0.5] * 3, std=[0.5] * 3)]
 
-if args.dataset != 'arial2times':
-    transform.insert(0, transforms.RandomHorizontalFlip())
-
 transform = transforms.Compose(transform)
 
 dataset_dir = '{}/datasets/{}'.format(args.root_dir, args.dataset)
@@ -32,13 +29,16 @@ dataset_dirs = reorganize(dataset_dir)
 
 a_test_data = dsets.ImageFolder(dataset_dirs['testA'], transform=transform)
 b_test_data = dsets.ImageFolder(dataset_dirs['testB'], transform=transform)
-a_test_loader = torch.utils.data.DataLoader(a_test_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
-b_test_loader = torch.utils.data.DataLoader(b_test_data, batch_size=args.batch_size, shuffle=True, num_workers=4)
+a_test_loader = torch.utils.data.DataLoader(a_test_data, batch_size=args.batch_size, shuffle=False, num_workers=4)
+b_test_loader = torch.utils.data.DataLoader(b_test_data, batch_size=args.batch_size, shuffle=False, num_workers=4)
 
 gen_a = Generator()
 gen_b = Generator()
 
+cuda([gen_a, gen_b])
+
 ckpt_dir = '{}/checkpoints/{}'.format(args.root_dir, args.dataset)
+print(ckpt_dir)
 
 try:
     ckpt = load_checkpoint(ckpt_dir)
@@ -63,6 +63,7 @@ mkdir(save_dir)
 
 print('Starting generating b to a in batches of {}:'.format(args.batch_size))
 for i, (b_test_real, _) in enumerate(b_test_loader):
+    b_test_real = cuda(b_test_real)
     a_test_fake = gen_a(b_test_real)
     b_test_cycle = gen_b(a_test_fake)
 
@@ -80,6 +81,7 @@ print('Finished generating all batches for b to a')
 
 print('Starting generating a to b in batches of {}:'.format(args.batch_size))
 for i, (a_test_real, _) in enumerate(a_test_loader):
+    a_test_real = cuda(a_test_real)
     b_test_fake = gen_b(a_test_real)
     a_test_cycle = gen_a(b_test_fake)
 

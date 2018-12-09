@@ -104,7 +104,7 @@ def load_checkpoint(ckpt_dir_or_file, map_location=None, load_best=False):
             ckpt_path = os.path.join(ckpt_dir_or_file, 'best_model.ckpt')
         else:
             with open(os.path.join(ckpt_dir_or_file, 'latest_checkpoint')) as f:
-                ckpt_path = os.path.join(ckpt_dir_or_file, f.readline()[:-1])
+                ckpt_path = os.path.join(ckpt_dir_or_file, f.readlines()[-1])
     else:
         ckpt_path = ckpt_dir_or_file
     print(ckpt_path)
