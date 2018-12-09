@@ -10,7 +10,7 @@ import numpy as np
 import torchvision.datasets as dsets
 
 from utils import mkdir, save_checkpoint, load_checkpoint, cuda, reorganize, weights_init_normal, LambdaLR, \
-    save_checkpoint_per_epoch
+    save_checkpoint_per_epoch, ItemPool
 from model import Generator, Discriminator
 
 # make training behaviour deterministic
@@ -19,32 +19,6 @@ from model import Generator, Discriminator
 # torch.manual_seed(1)
 # torch.cuda.manual_seed(1)
 # torch.backends.cudnn.deterministic = True
-
-
-class ItemPool():
-    """
-    This class represents a pool of generated images
-    """
-    def __init__(self, max_size=50):
-        assert (max_size > 0), 'Empty buffer or trying to create a black hole. Be careful.'
-        self.max_size = max_size
-        self.data = []
-
-    def __call__(self, data):
-        to_return = []
-        for element in data.data:
-            element = torch.unsqueeze(element, 0)
-            if len(self.data) < self.max_size:
-                self.data.append(element)
-                to_return.append(element)
-            else:
-                if np.random.uniform(0, 1) > 0.5:
-                    i = np.random.randint(0, self.max_size-1)
-                    to_return.append(self.data[i].clone())
-                    self.data[i] = element
-                else:
-                    to_return.append(element)
-        return torch.cat(to_return)
 
 
 parser = argparse.ArgumentParser()
@@ -160,6 +134,7 @@ b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grad=False)
 a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
 history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'gen_loss_total': [], 'disc_loss': []}
+mkdir('{}/history/{}'.format(args.root_dir, args.dataset))
 
 # train
 for epoch in range(start_epoch, args.epochs):
@@ -324,6 +299,9 @@ for epoch in range(start_epoch, args.epochs):
                                          epoch + 1)
 
     #         break
+    if (epoch + 1) % 10 == 0:
+        with open('{}/history/{}/history_till_epoch_{}.pkl'.format(args.root_dir, args.dataset, epoch), 'wb') as f:
+            pickle.dump(history, f)
 
     # update learning rates
     disc_a_lr_scheduler.step()
@@ -331,5 +309,5 @@ for epoch in range(start_epoch, args.epochs):
     gen_a_lr_scheduler.step()
     gen_b_lr_scheduler.step()
 
-with open('{}/history/{}/history.pkl'.format(args.root_dir, args.dataset)) as f:
+with open('{}/history/{}/full_history.pkl'.format(args.root_dir, args.dataset), 'wb') as f:
     pickle.dump(history, f)

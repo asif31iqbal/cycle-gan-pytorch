@@ -1,5 +1,6 @@
 import os
 import shutil
+import numpy as np
 
 import torch
 
@@ -147,6 +148,32 @@ def truncated_normal_(tensor, mean=0, std=1):
     ind = valid.max(-1, keepdim=True)[1]
     tensor.data.copy_(tmp.gather(-1, ind).squeeze(-1))
     tensor.data.mul_(std).add_(mean)
+
+
+class ItemPool():
+    """
+    This class represents a pool of generated images
+    """
+    def __init__(self, max_size=50):
+        assert (max_size > 0), 'Empty buffer or trying to create a black hole. Be careful.'
+        self.max_size = max_size
+        self.data = []
+
+    def __call__(self, data):
+        to_return = []
+        for element in data.data:
+            element = torch.unsqueeze(element, 0)
+            if len(self.data) < self.max_size:
+                self.data.append(element)
+                to_return.append(element)
+            else:
+                if np.random.uniform(0, 1) > 0.5:
+                    i = np.random.randint(0, self.max_size-1)
+                    to_return.append(self.data[i].clone())
+                    self.data[i] = element
+                else:
+                    to_return.append(element)
+        return torch.cat(to_return)
 
 
 class LambdaLR():
