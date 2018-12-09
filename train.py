@@ -134,7 +134,7 @@ b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grad=False)
 a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
 history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'gen_loss_total': [], 'disc_loss': []}
-mkdir('{}/history/{}'.format(args.root_dir, args.dataset))
+mkdir('{}/history/{}/lr004'.format(args.root_dir, args.dataset))
 
 # train
 for epoch in range(start_epoch, args.epochs):
@@ -261,7 +261,7 @@ for epoch in range(start_epoch, args.epochs):
                              b_test_real, a_test_fake, b_test_cycle],
                             dim=0).data / 2.0 + 0.5
 
-            save_dir = '{}/sample_images/{}'.format(args.root_dir, args.dataset)
+            save_dir = '{}/sample_images/{}/lr004'.format(args.root_dir, args.dataset)
             mkdir(save_dir)
             torchvision.utils.save_image(pic,
                                          '{}/Epoch_({})_({}of{}).jpg'.format(save_dir,
@@ -295,12 +295,12 @@ for epoch in range(start_epoch, args.epochs):
                                          'disc_b_optimizer': disc_b_optimizer.state_dict(),
                                          'gen_a_optimizer': gen_a_optimizer.state_dict(),
                                          'gen_b_optimizer': gen_b_optimizer.state_dict()},
-                                         '{}/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
+                                         '{}/lr004/Epoch_({}_iter_{}).ckpt'.format(ckpt_dir, epoch + 1, i + 1),
                                          epoch + 1)
 
     #         break
     if (epoch + 1) % 10 == 0:
-        with open('{}/history/{}/history_till_epoch_{}.pkl'.format(args.root_dir, args.dataset, epoch), 'wb') as f:
+        with open('{}/history/{}/lr004/history_till_epoch_{}.pkl'.format(args.root_dir, args.dataset, epoch), 'wb') as f:
             pickle.dump(history, f)
 
     # update learning rates
@@ -309,5 +309,5 @@ for epoch in range(start_epoch, args.epochs):
     gen_a_lr_scheduler.step()
     gen_b_lr_scheduler.step()
 
-with open('{}/history/{}/full_history.pkl'.format(args.root_dir, args.dataset), 'wb') as f:
+with open('{}/history/{}/lr004/full_history.pkl'.format(args.root_dir, args.dataset), 'wb') as f:
     pickle.dump(history, f)
