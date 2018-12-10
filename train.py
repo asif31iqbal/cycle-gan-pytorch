@@ -53,7 +53,7 @@ transform = [transforms.Resize(args.load_size),
      transforms.ToTensor(),
      transforms.Normalize(mean=[0.5] * 3, std=[0.5] * 3)]
 
-if args.dataset != 'arial2times':
+if args.dataset != 'arial2times' and args.dataset != 'arial2times_word':
     transform.insert(0, transforms.RandomHorizontalFlip())
 
 transform = transforms.Compose(transform)
@@ -111,7 +111,7 @@ a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
 
 
-ckpt_dir = '{}/checkpoints/{}'.format(args.root_dir, args.dataset)
+ckpt_dir = '{}/checkpoints/{}/lr002_l10'.format(args.root_dir, args.dataset)
 mkdir(ckpt_dir)
 try:
     ckpt = load_checkpoint(ckpt_dir)
@@ -134,7 +134,7 @@ b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grad=False)
 a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
 history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'gen_loss_total': [], 'disc_loss': []}
-history_dir = '{}/history/{}'.format(args.root_dir, args.dataset)
+history_dir = '{}/history/{}/lr002_l10'.format(args.root_dir, args.dataset)
 mkdir(history_dir)
 
 # train
@@ -262,7 +262,7 @@ for epoch in range(start_epoch, args.epochs):
                              b_test_real, a_test_fake, b_test_cycle],
                             dim=0).data / 2.0 + 0.5
 
-            save_dir = '{}/sample_images/{}'.format(args.root_dir, args.dataset)
+            save_dir = '{}/sample_images/{}/lr002_l10'.format(args.root_dir, args.dataset)
             mkdir(save_dir)
             torchvision.utils.save_image(pic,
                                          '{}/Epoch_({})_({}of{}).jpg'.format(save_dir,
@@ -313,5 +313,9 @@ for epoch in range(start_epoch, args.epochs):
 with open('{}/full_history.pkl'.format(history_dir), 'wb') as f:
     pickle.dump(history, f)
 
-# apple2orange lr = 0.0004, lambda = 5
+# apple2orange
+# lr = 0.0004, lambda = 5
+# lr = 0.0002, lambda = 5
+# lr = 0.0002, lambda = 10
 # summer2winter lr = 0.0002, lambda =10, id_lambda = 5
+# font lr=0.0002, lambda = 10

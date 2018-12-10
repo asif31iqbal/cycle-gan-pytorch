@@ -14,6 +14,7 @@ parser.add_argument('--load_size', type=int, default=286, help='load size of the
 parser.add_argument('--crop_size', type=int, default=256, help='crop size of the images during transformation')
 parser.add_argument('--dataset', type=str, default='arial2times', help='dataset name')
 parser.add_argument('--root_dir', type=str, default='/media/external4T/a38iqbal/cycle_gan', help='dataset name')
+parser.add_argument('--custom_checkpoint', type=str, default=None, help='custom checkpoint path')
 args = parser.parse_args()
 
 transform = [transforms.Resize(args.load_size),
@@ -41,8 +42,10 @@ ckpt_dir = '{}/checkpoints/{}'.format(args.root_dir, args.dataset)
 print(ckpt_dir)
 
 try:
-    ckpt = load_checkpoint(ckpt_dir)
-    start_epoch = ckpt['epoch']
+    if args.custom_checkpoint:
+        ckpt = load_checkpoint(args.custom_checkpoint)
+    else:
+        ckpt = load_checkpoint(ckpt_dir)
     gen_a.load_state_dict(ckpt['gen_a'])
     gen_b.load_state_dict(ckpt['gen_b'])
 #     gen_optimizer.load_state_dict(ckpt['gen_optimizer'])
