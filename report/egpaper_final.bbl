@@ -1,0 +1,90 @@
+\begin{thebibliography}{10}\itemsep=-1pt
+
+\bibitem{Alpher02}
+A.~Alpher.
+\newblock Frobnication.
+\newblock {\em Journal of Foo}, 12(1):234--778, 2002.
+
+\bibitem{Alpher03}
+A.~Alpher and J.~P.~N. Fotheringham-Smythe.
+\newblock Frobnication revisited.
+\newblock {\em Journal of Foo}, 13(1):234--778, 2003.
+
+\bibitem{Alpher04}
+A.~Alpher, J.~P.~N. Fotheringham-Smythe, and G.~Gamow.
+\newblock Can a machine frobnicate?
+\newblock {\em Journal of Foo}, 14(1):234--778, 2004.
+
+\bibitem{Authors14}
+Authors.
+\newblock The frobnicatable foo filter, 2014.
+\newblock Face and Gesture submission ID 324. Supplied as additional material
+  {\tt fg324.pdf}.
+
+\bibitem{rel1}
+D.~Eigen and R.~Fergus.
+\newblock Predicting depth, surface normal and semantic labels with a common
+  multi-scale.
+\newblock {\em ICCV}, 2015.
+
+\bibitem{rel2}
+D.~Eigen and R.~Fergus.
+\newblock Predicting depth, surface normal and semantic labels with a common
+  multi-scale.
+\newblock {\em ICCV}, 2015.
+
+\bibitem{rel3}
+A.~Hertzmann, C.~E. Jacobs, N.~Oliver, B.~Curless, and D.~H. Salesin.
+\newblock Image analogies.
+\newblock {\em SIGGRAPH}, 2001.
+
+\bibitem{pix2pix}
+P.~Isola, J.~Y. Zhu, T.~Zhou, and A.~A. Efros.
+\newblock Image-to-image translation with conditional adversarial networks.
+\newblock {\em CVPR}, 2017.
+
+\bibitem{rel4}
+J.~Johnson, A.~Alahi, and L.~Fei-Fei.
+\newblock Perceptual losses for real-time style transfer and super-resolution.
+\newblock {\em ECCV}, 2016.
+
+\bibitem{rel5}
+P.-Y. Laffont, Z.~Ren, X.~Tao, C.~Qian, and J.~Hays.
+\newblock Transient attributes for high-level understanding and editing of
+  outdoor scenes.
+\newblock {\em ACM TOG, 33(4):149}, 2014.
+
+\bibitem{rel6}
+J.~Long, E.~Shelhamer, and T.~Darrell.
+\newblock Fully convolutional networks for semantic segmentation.
+\newblock {\em CVPR}, 2015.
+
+\bibitem{rel7}
+Y.~Shih, S.~Paris, F.~Durand, and W.~T. Freeman.
+\newblock Datadriven hallucination of different times of day from a single
+  outdoor photo.
+\newblock {\em ACM TOG, 32(6):200}, 2013.
+
+\bibitem{rel8}
+X.~Wang and A.~Gupta.
+\newblock Generative image modeling using style and structure adversarial
+  networks.
+\newblock {\em ECCV}, 2016.
+
+\bibitem{rel9}
+S.~Xie and Z.~Tu.
+\newblock Holistically-nested edge detection.
+\newblock {\em ICCV}, 2015.
+
+\bibitem{rel10}
+R.~Zhang, P.~Isola, and A.~A. Efros.
+\newblock Colorful image colorization.
+\newblock {\em ECCV}, 2016.
+
+\bibitem{cyclegan}
+J.~Y. Zhu, T.~Park, P.~Isola, and A.~A. Efros.
+\newblock Unpaired image-to-image translation using cycle-consistent
+  adversarial networks.
+\newblock {\em CVPR}, 2017.
+
+\end{thebibliography}
