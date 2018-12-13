@@ -10,15 +10,16 @@ from model import Generator
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--batch_size', type=int, default=1, help='size of the batches')
-parser.add_argument('--load_size', type=int, default=286, help='load size of the images')
-parser.add_argument('--crop_size', type=int, default=256, help='crop size of the images during transformation')
+parser.add_argument('--load_size', type=int, default=256, help='load size of the images')
+# parser.add_argument('--crop_size', type=int, default=256, help='crop size of the images during transformation')
 parser.add_argument('--dataset', type=str, default='arial2times', help='dataset name')
 parser.add_argument('--root_dir', type=str, default='/media/external4T/a38iqbal/cycle_gan', help='dataset name')
 parser.add_argument('--custom_checkpoint', type=str, default=None, help='custom checkpoint path')
 args = parser.parse_args()
 
-transform = [transforms.Resize(args.load_size),
-     transforms.RandomCrop(args.crop_size),
+transform = [
+     transforms.Resize(args.load_size),
+     # transforms.(args.crop_size),
      transforms.ToTensor(),
      transforms.Normalize(mean=[0.5] * 3, std=[0.5] * 3)]
 

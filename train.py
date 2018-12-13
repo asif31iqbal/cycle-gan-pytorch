@@ -33,7 +33,7 @@ parser.add_argument('--crop_size', type=int, default=256, help='crop size of the
 parser.add_argument('--dataset', type=str, default='apple2orange', help='dataset name')
 parser.add_argument('--root_dir', type=str, default='/media/external4T/a38iqbal/cycle_gan', help='dataset name')
 parser.add_argument('--cycle_loss_lambda', type=float, default=10.0, help='cycle loss multiplier constant')
-parser.add_argument('--identity_loss_lambda', type=float, default=5.0, help='cycle loss multiplier constant')
+parser.add_argument('--identity_loss_lambda', type=float, default=0.0, help='cycle loss multiplier constant')
 
 
 args = parser.parse_args()
@@ -157,7 +157,7 @@ for epoch in range(start_epoch, args.epochs):
         a_train_fake = gen_a(b_train_real)
         b_train_fake = gen_b(a_train_real)
 
-        if args.dataset == 'summer2winter_yosemite':
+        if args.identity_loss_lambda > 0.0:
             # real to real
             a_train_identity = gen_a(a_train_real)
             b_train_identity = gen_b(b_train_real)
@@ -173,7 +173,7 @@ for epoch in range(start_epoch, args.epochs):
         a_train_loss_gen = MSE(a_train_fake_disc, real_label)
         b_train_loss_gen = MSE(b_train_fake_disc, real_label)
 
-        if args.dataset == 'summer2winter_yosemite':
+        if args.identity_loss_lambda > 0.0:
             # identity loss
             a_train_loss_identity = L1(a_train_identity, a_train_real)
             b_train_loss_identity = L1(b_train_identity, b_train_real)
@@ -189,7 +189,7 @@ for epoch in range(start_epoch, args.epochs):
         identity_loss = args.identity_loss_lambda * (a_train_loss_identity + b_train_loss_identity)
         cycle_loss = args.cycle_loss_lambda * (a_train_loss_cycle + b_train_loss_cycle)
 
-        if args.dataset == 'summer2winter_yosemite':
+        if args.identity_loss_lambda > 0.0:
             train_loss_gen = gen_loss + identity_loss + cycle_loss
         else:
             train_loss_gen = gen_loss + cycle_loss

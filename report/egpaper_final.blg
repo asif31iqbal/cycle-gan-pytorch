@@ -1,48 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
-Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: egpaper_final.aux
 The style file: ieee.bst
 Database file #1: egbib.bib
 Warning--I didn't find a database entry for "Authors14b"
-You've used 16 entries,
+You've used 18 entries,
             2120 wiz_defined-function locations,
-            571 strings with 5385 characters,
-and the built_in function-call counts, 4570 in all, are:
-= -- 429
-> -- 276
+            578 strings with 5608 characters,
+and the built_in function-call counts, 5107 in all, are:
+= -- 478
+> -- 311
 < -- 0
-+ -- 109
-- -- 92
-* -- 300
-:= -- 840
-add.period$ -- 48
-call.type$ -- 16
-change.case$ -- 94
++ -- 123
+- -- 104
+* -- 333
+:= -- 942
+add.period$ -- 54
+call.type$ -- 18
+change.case$ -- 106
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 160
-empty$ -- 308
-format.name$ -- 92
-if$ -- 899
+cite$ -- 18
+duplicate$ -- 180
+empty$ -- 342
+format.name$ -- 104
+if$ -- 1003
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 15
-newline$ -- 83
-num.names$ -- 32
-pop$ -- 93
+int.to.str$ -- 18
+missing$ -- 17
+newline$ -- 93
+num.names$ -- 36
+pop$ -- 105
 preamble$ -- 1
-purify$ -- 78
+purify$ -- 88
 quote$ -- 0
-skip$ -- 116
+skip$ -- 130
 stack$ -- 0
-substring$ -- 156
-swap$ -- 16
+substring$ -- 166
+swap$ -- 18
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
+type$ -- 72
 warning$ -- 0
-while$ -- 38
-width$ -- 18
-write$ -- 165
+while$ -- 42
+width$ -- 20
+write$ -- 185
 (There was 1 warning)

@@ -33,6 +33,11 @@ D.~Eigen and R.~Fergus.
   multi-scale.
 \newblock {\em ICCV}, 2015.
 
+\bibitem{gan1}
+I.~Goodfellow.
+\newblock Nips 2016 tutorial: Generative adversarial.
+\newblock {\em arXiv preprint arXiv:1701.00160}, 2016.
+
 \bibitem{rel3}
 A.~Hertzmann, C.~E. Jacobs, N.~Oliver, B.~Curless, and D.~H. Salesin.
 \newblock Image analogies.
@@ -80,6 +85,11 @@ S.~Xie and Z.~Tu.
 R.~Zhang, P.~Isola, and A.~A. Efros.
 \newblock Colorful image colorization.
 \newblock {\em ECCV}, 2016.
+
+\bibitem{cycle2}
+T.~Zhou, P.~Krahenbuhl, M.~Aubry, Q.~Huang, and A.~A. Efros.
+\newblock Learning dense correspondence via 3dguided cycle consistency.
+\newblock {\em CVPR}, 2016.
 
 \bibitem{cyclegan}
 J.~Y. Zhu, T.~Park, P.~Isola, and A.~A. Efros.

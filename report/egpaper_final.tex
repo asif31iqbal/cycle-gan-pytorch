@@ -74,20 +74,22 @@ never seen a summer and winter version of the same scene side by side. Based on
 this insight, the authors of CycleGAN \cite{cyclegan} came up with the algorithm 
 that can learn to translate between domains without paired input-output examples, 
 assuming that there is some underlying relationship between the domains – for 
-example, that they are two different renderings of the same underlying scene – and 
-seek to learn that relationship. Although the algorithm lacks supervision in the form 
+example, that they are two different renderings of the same underlying scene – and seek to learn that relationship. Although the algorithm lacks supervision in the form 
 of paired examples, it can exploit supervision at the level of sets: we are given one 
 set of images in domain $X$ and a different set in domain $Y$. We may train a mapping 
 $G : X \leftarrow Y$ such that the output $\hat{y} = G(x)$, $x \in X$, is indistinguishable from 
-images $y \in Y$ by an adversary trained to classify $\hat{y}$ apart from $y$ \cite{cyclegan}.
+images $y \in Y$ by an adversary trained to classify $\hat{y}$ apart from $y$ \cite{cyclegan}. However,
+as discussed in \cite{cyclegan} that there could be infinitely many mappings $G$ that will induce the same distribution over $\hat{y}$. Also, there is the problem of mode collapse \cite{gan1}, where all input images map to the same output image and the optimization fails to make progress.
 
+To tackle these problems, the CycleGAN \cite{cyclegan} authors leverage the notion of \textit{cycle consistency}, in the sense that if we transfer the font style of a character from Arial to Times New Roman, and then translate it back from Times New Roman to Arial, we should get back the original character. Mathematically, if we have a translator $G : X \leftarrow Y$ and another translator $F: Y \leftarrow X$, then G and F should be inverses of each other, and both mappings should be bijections. We apply this structural assumption by training both the mapping G and F simultaneously, and adding a cycle consistency loss \cite{cycle2} that encourages $F(G(x)) \approx x$ and $G(F(y)) \approx y$.
 
+The authors \cite{cyclegan} have applied this idea to a wide range of
+applications, like collection style transfer, object transfiguration, season
+transfer and photo enhancement. In this paper, we first attempt to regenerate
+their work and network architecture from scratch, apply it to couple of domains 
+that they have already tried out, namely season ($summer \leftrightarrow winter$) transfer and object style transfer ($apple \leftrightarrow orange$). Next, we apply it to the domain of font style transfer. We limit ourselves to just two fonts - Arial and Times New Roman. We try it on single uppercase black English characters and on lowercase black English words. Although it is not difficult to get paired data for this sort of font style transfers for well known fonts which are widely available, there are unknown fonts, text and calligraphy styles that are available in the wild for which it is not easy to get paired data and applying the CycleGAN concept might be a good idea. The attempt with known fonts in this paper is a baby step towards the possible applicability of unknown font style transfers using cycle consistency.
 
-Please follow the steps outlined below when submitting your manuscript to
-the IEEE Computer Society Press.  This style guide now has several
-important modifications (for example, you are no longer warned against the
-use of sticky tape to attach your artwork to the paper), so all authors
-should read this new version.
+\section{Related Work}
 
 %-------------------------------------------------------------------------
 \subsection{Language}
