@@ -87,9 +87,43 @@ The authors \cite{cyclegan} have applied this idea to a wide range of
 applications, like collection style transfer, object transfiguration, season
 transfer and photo enhancement. In this paper, we first attempt to regenerate
 their work and network architecture from scratch, apply it to couple of domains 
-that they have already tried out, namely season ($summer \leftrightarrow winter$) transfer and object style transfer ($apple \leftrightarrow orange$). Next, we apply it to the domain of font style transfer. We limit ourselves to just two fonts - Arial and Times New Roman. We try it on single uppercase black English characters and on lowercase black English words. Although it is not difficult to get paired data for this sort of font style transfers for well known fonts which are widely available, there are unknown fonts, text and calligraphy styles that are available in the wild for which it is not easy to get paired data and applying the CycleGAN concept might be a good idea. The attempt with known fonts in this paper is a baby step towards the possible applicability of unknown font style transfers using cycle consistency.
+that they have already tried out, namely season ($summer \leftrightarrow winter$) 
+transfer and object style transfer ($apple \leftrightarrow orange$). Next, we apply 
+it to the domain of font style transfer. We limit ourselves to just two fonts - Arial and 
+Times New Roman. We try it on single uppercase black English characters and on 
+lowercase black English words. Although it is not difficult to get paired data for this 
+sort of font style transfers for well known fonts which are widely available, there are 
+unknown fonts, text and calligraphy styles that are available in the wild for which it is 
+not easy to get paired data and applying the CycleGAN concept might be a good idea. 
+The attempt with known fonts in this paper is a baby step towards the possible 
+applicability of unknown font style transfers using cycle consistency.
 
 \section{Related Work}
+Over the last couple of years, Generative Adversarial Networks (GANs) \citep{gan1, gan2} have achieved
+quite a bit of success in image generation. The key idea behind GAN's success is the \textit{adversarial 
+loss} that forces the generated image to be indistinguishable from the input image. In the CycleGAN case,
+the adversarial loss has been adopted in such a way that the generated images are indistinguishable from 
+the images in the target domain.
+
+Much of the related work regarding unpaired image-to-image translation have been mentioned in the 
+original paper \cite{cyclegan}. Approaches like \cite{rel3, rel6, rel11, rel12} and \textbf{Pix2Pix} work on 
+paired training examples, as opposed to the unpaired training concept that CycleGAN relies on.
+
+There has been a few works on unpaired image-to-image translation as well. Works like \cite{rel13, rel14, 
+rel15} uses a weight sharing strategy between domains. Another group of work like \cite{rel16, rel17, rel18} 
+encourages the input and output to share specific content features even though they may differ in style. 
+Unlike these approaches, the CycleGAN concept does not rely on any task specific, predefined similarity 
+measurements. It's more of a general purpose framework.
+
+As mentioned in the original paper, the idea of cycle consistency also has quite a bit of a history. Of these 
+works, \citep{rel19}, \cite{rel20} and \cite{21} are the ones that are conceptually most similar to 
+CycleGANs.
+
+Neural Style Transfer \cite{rel4, rel22, rel23} is another family of work for image to image translation, 
+which synthesizes an image by combining the content of one image with the style of another image. 
+Again, this is a paired training concept while CycleGAN is unpaired.
+
+ 
 
 %-------------------------------------------------------------------------
 \subsection{Language}
