@@ -65,6 +65,9 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\hskip -1em.\nobreakspace  {}Loss Functions}{4322}{subsection.3.1}}
 \citation{data1}
 \citation{data2}
+\citation{data2}
+\citation{cyclegan}
+\citation{cyclegan}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:gan_b}{{1a}{4323}{Generator $G_{A2B}$ takes an image $a_{real}$ from domain $A$ and outputs $a_{fake}$ which Discriminator $D_B$ tries to distinguish from actual images in domain $B$. Image $a_{fake}$ is then passed onto generator $G_{B2A}$ which generates $a_{cycle}$. This is used for calculating the \textit {cycle-consistency} loss.\relax }{figure.caption.1}{}}
 \newlabel{sub@fig:gan_b}{{a}{4323}{Generator $G_{A2B}$ takes an image $a_{real}$ from domain $A$ and outputs $a_{fake}$ which Discriminator $D_B$ tries to distinguish from actual images in domain $B$. Image $a_{fake}$ is then passed onto generator $G_{B2A}$ which generates $a_{cycle}$. This is used for calculating the \textit {cycle-consistency} loss.\relax }{figure.caption.1}{}}
@@ -73,14 +76,27 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Problem Formulation\relax }}{4323}{figure.caption.1}}
 \newlabel{fig:problem}{{1}{4323}{Problem Formulation\relax }{figure.caption.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Data Collection}{4323}{section.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}\hskip -1em.\nobreakspace  {}Language}{4323}{subsection.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}\hskip -1em.\nobreakspace  {}Dual submission}{4323}{subsection.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}\hskip -1em.\nobreakspace  {}Paper length}{4323}{subsection.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Network Architecture}{4323}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.\nobreakspace  {}Generator}{4323}{subsection.5.1}}
+\citation{cyclegan}
+\newlabel{fig:gen}{{2a}{4324}{Generator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
+\newlabel{sub@fig:gen}{{a}{4324}{Generator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
+\newlabel{fig:res}{{2b}{4324}{Resnet Block in Detail (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
+\newlabel{sub@fig:res}{{b}{4324}{Resnet Block in Detail (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
+\newlabel{fig:disc}{{2c}{4324}{Discriminator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
+\newlabel{sub@fig:disc}{{c}{4324}{Discriminator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Network Architecture\relax }}{4324}{figure.caption.2}}
+\newlabel{fig:architecture}{{2}{4324}{Network Architecture\relax }{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}\hskip -1em.\nobreakspace  {}Discriminator}{4324}{subsection.5.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.\nobreakspace  {}Experimentation}{4325}{section.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}\hskip -1em.\nobreakspace  {}Language}{4325}{subsection.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}\hskip -1em.\nobreakspace  {}Dual submission}{4325}{subsection.6.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}\hskip -1em.\nobreakspace  {}Paper length}{4325}{subsection.6.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}\hskip -1em.\nobreakspace  {}The ruler}{4325}{subsection.6.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}\hskip -1em.\nobreakspace  {}Mathematics}{4325}{subsection.6.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}\hskip -1em.\nobreakspace  {}Blind review}{4325}{subsection.6.6}}
 \citation{Authors14}
 \citation{Authors14b}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}\hskip -1em.\nobreakspace  {}The ruler}{4324}{subsection.4.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}\hskip -1em.\nobreakspace  {}Mathematics}{4324}{subsection.4.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}\hskip -1em.\nobreakspace  {}Blind review}{4324}{subsection.4.6}}
 \citation{Alpher02}
 \citation{Alpher03}
 \citation{Alpher04}
@@ -92,51 +108,49 @@
 \citation{Alpher02}
 \citation{Alpher03}
 \citation{Authors14}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \qopname  \relax o{sin}A = A \qopname  \relax o{sin}B$) may be included without an ugly clash.\relax }}{4325}{figure.caption.2}}
-\newlabel{fig:long}{{2}{4325}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.2}{}}
-\newlabel{fig:onecol}{{2}{4325}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}\hskip -1em.\nobreakspace  {}Miscellaneous}{4325}{subsection.4.7}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Formatting your paper}{4325}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.\nobreakspace  {}Margins and page numbering}{4325}{subsection.5.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}\hskip -1em.\nobreakspace  {}Type-style and fonts}{4325}{subsection.5.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \qopname  \relax o{sin}A = A \qopname  \relax o{sin}B$) may be included without an ugly clash.\relax }}{4326}{figure.caption.3}}
+\newlabel{fig:long}{{3}{4326}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
+\newlabel{fig:onecol}{{3}{4326}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}\hskip -1em.\nobreakspace  {}Miscellaneous}{4326}{subsection.6.7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example of a short caption, which should be centered.\relax }}{4327}{figure.caption.4}}
+\newlabel{fig:short}{{4}{4327}{Example of a short caption, which should be centered.\relax }{figure.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}\hskip -1em.\nobreakspace  {}Formatting your paper}{4327}{section.7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}\hskip -1em.\nobreakspace  {}Margins and page numbering}{4327}{subsection.7.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}\hskip -1em.\nobreakspace  {}Type-style and fonts}{4327}{subsection.7.2}}
 \citation{Authors14}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example of a short caption, which should be centered.\relax }}{4326}{figure.caption.3}}
-\newlabel{fig:short}{{3}{4326}{Example of a short caption, which should be centered.\relax }{figure.caption.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results. Ours is better.\relax }}{4326}{table.caption.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}\hskip -1em.\nobreakspace  {}Footnotes}{4326}{subsection.5.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}\hskip -1em.\nobreakspace  {}References}{4326}{subsection.5.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}\hskip -1em.\nobreakspace  {}Illustrations, graphs, and photographs}{4326}{subsection.5.5}}
 \bibstyle{ieee}
 \bibdata{egbib}
-\bibcite{Alpher02}{1}
-\bibcite{Alpher03}{2}
-\bibcite{Alpher04}{3}
-\bibcite{Authors14}{4}
-\bibcite{rel13}{5}
-\bibcite{rel16}{6}
-\bibcite{rel1}{7}
-\bibcite{rel2}{8}
-\bibcite{rel22}{9}
-\bibcite{rel19}{10}
-\bibcite{gan2}{11}
-\bibcite{gan1}{12}
-\bibcite{rel3}{13}
-\bibcite{pix2pix}{14}
-\bibcite{rel4}{15}
-\bibcite{rel12}{16}
-\bibcite{rel5}{17}
-\bibcite{rel14}{18}
-\bibcite{rel15}{19}
-\bibcite{rel6}{20}
-\bibcite{rel11}{21}
-\bibcite{rel7}{22}
-\bibcite{rel17}{23}
-\bibcite{rel23}{24}
-\bibcite{rel8}{25}
-\bibcite{rel9}{26}
-\bibcite{rel18}{27}
-\bibcite{rel20}{28}
-\bibcite{rel10}{29}
-\bibcite{cyclegan}{30}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}\hskip -1em.\nobreakspace  {}Color}{4327}{subsection.5.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.\nobreakspace  {}Final copy}{4327}{section.6}}
+\bibcite{rel13}{1}
+\bibcite{rel16}{2}
+\bibcite{rel1}{3}
+\bibcite{rel2}{4}
+\bibcite{rel22}{5}
+\bibcite{rel19}{6}
+\bibcite{gan1}{7}
+\bibcite{gan2}{8}
+\bibcite{rel3}{9}
+\bibcite{pix2pix}{10}
+\bibcite{rel4}{11}
+\bibcite{rel12}{12}
+\bibcite{rel5}{13}
+\bibcite{rel14}{14}
+\bibcite{rel15}{15}
+\bibcite{rel6}{16}
+\bibcite{data1}{17}
+\bibcite{rel11}{18}
+\bibcite{rel7}{19}
+\bibcite{rel17}{20}
+\bibcite{rel23}{21}
+\bibcite{data2}{22}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results. Ours is better.\relax }}{4328}{table.caption.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}\hskip -1em.\nobreakspace  {}Footnotes}{4328}{subsection.7.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}\hskip -1em.\nobreakspace  {}References}{4328}{subsection.7.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}\hskip -1em.\nobreakspace  {}Illustrations, graphs, and photographs}{4328}{subsection.7.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}\hskip -1em.\nobreakspace  {}Color}{4328}{subsection.7.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}\hskip -1em.\nobreakspace  {}Final copy}{4328}{section.8}}
+\bibcite{rel8}{23}
+\bibcite{rel9}{24}
+\bibcite{rel18}{25}
+\bibcite{rel20}{26}
+\bibcite{rel10}{27}
+\bibcite{cyclegan}{28}

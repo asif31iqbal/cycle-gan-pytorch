@@ -1,26 +1,5 @@
 \begin{thebibliography}{10}\itemsep=-1pt
 
-\bibitem{Alpher02}
-A.~Alpher.
-\newblock Frobnication.
-\newblock {\em Journal of Foo}, 12(1):234--778, 2002.
-
-\bibitem{Alpher03}
-A.~Alpher and J.~P.~N. Fotheringham-Smythe.
-\newblock Frobnication revisited.
-\newblock {\em Journal of Foo}, 13(1):234--778, 2003.
-
-\bibitem{Alpher04}
-A.~Alpher, J.~P.~N. Fotheringham-Smythe, and G.~Gamow.
-\newblock Can a machine frobnicate?
-\newblock {\em Journal of Foo}, 14(1):234--778, 2004.
-
-\bibitem{Authors14}
-Authors.
-\newblock The frobnicatable foo filter, 2014.
-\newblock Face and Gesture submission ID 324. Supplied as additional material
-  {\tt fg324.pdf}.
-
 \bibitem{rel13}
 Y.~Aytar, L.~Castrejon, C.~Vondrick, H.~Pirsiavash, and A.~Torralba.
 \newblock Cross-modal scene networks.
@@ -54,16 +33,16 @@ C.~Godard, O.~M. Aodha, and G.~J. Brostow.
 \newblock Unsupervised monocular depth estimation with left-right consistency.
 \newblock {\em CVPR}, 2017.
 
-\bibitem{gan2}
-.~Goodfellow, J.~Pouget-Abadie, M.~Mirza, B.~Xu, D.~Warde-Farley, S.~Ozair,
-  A.~Courville, and Y.~Bengio.
-\newblock Generative adversarial nets.
-\newblock {\em NIPS}, 2014.
-
 \bibitem{gan1}
 I.~Goodfellow.
 \newblock Nips 2016 tutorial: Generative adversarial.
 \newblock {\em arXiv preprint arXiv:1701.00160}, 2016.
+
+\bibitem{gan2}
+I.~Goodfellow, J.~Pouget-Abadie, M.~Mirza, B.~Xu, D.~Warde-Farley, S.~Ozair,
+  A.~Courville, and Y.~Bengio.
+\newblock Generative adversarial nets.
+\newblock {\em NIPS}, 2014.
 
 \bibitem{rel3}
 A.~Hertzmann, C.~E. Jacobs, N.~Oliver, B.~Curless, and D.~H. Salesin.
@@ -107,6 +86,12 @@ J.~Long, E.~Shelhamer, and T.~Darrell.
 \newblock Fully convolutional networks for semantic segmentation.
 \newblock {\em CVPR}, 2015.
 
+\bibitem{data1}
+T.~Park.
+\newblock Cyclegan dataset.
+\newblock
+  \url{https://people.eecs.berkeley.edu/~taesung_park/CycleGAN/datasets}.
+
 \bibitem{rel11}
 P.~Sangkloy, J.~Lu, C.~Fang, F.~Yu, and J.~Hays.
 \newblock Scribbler:controlling deep image synthesis with sketch and color.
@@ -129,6 +114,12 @@ D.~Ulyanov, V.~Lebedev, A.~Vedaldi, and V.~Lempitsky.
 \newblock Texture networks: Feed-forward synthesis of textures and stylized
   images.
 \newblock {\em ICML}, 2016.
+
+\bibitem{data2}
+I.~University~of California.
+\newblock Uci bag-of-words vocabulary.
+\newblock
+  \url{https://archive.ics.uci.edu/ml/machine-learning-databases/bag-of-words/vocab.kos.txt}.
 
 \bibitem{rel8}
 X.~Wang and A.~Gupta.

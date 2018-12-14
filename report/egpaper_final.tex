@@ -8,6 +8,7 @@
 \usepackage{amssymb}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage{url}
 \graphicspath{{./images/helper/}{./images/apple2orange/}{./images/summer2winter/}}
 
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
@@ -199,14 +200,21 @@ $4$ and $8$ a re the \textit{cycle-consistency} components.
 
 The original authors used $L_2$ (MSE) loss for the adversarial components, and $L_1$ loss for the 
 \textit{cycle-consistency} component since it earned them better results. We adhere to the same 
-principle for our work. The loss functions can be mathematically written as follows:\\
+principle for our work. The loss equations can be mathematically written as follows:
 
+\begin{align*}
+\begin{split}
+	\mathcal{L}_{disc} ={}& \norm{D_A(a_{real}) - 1}_2 + \norm{D_B(b_{real}) - 1}_2 + \\
+							   	     & \norm{D_A(a_{fake}) - 0}_2 + \norm{D_B(b_{fake}) - 0}_2\\ 
+\end{split}
+\end{align*}
 
-$\mathcal{L}_{disc} = \norm{a_{real} - a_{fake}}_2 + \norm{b_{real} - b_{fake}}_2$ \\ 
+%$\mathcal{L}_{disc} &= \norm{D_A(a_{real}) - 1}_2 + \norm{D_B(b_{real}) - 1}_2 + \\
+%							   & \norm{D_A(a_{fake}) - 0}_2 + \norm{D_B(b_{real}) - 0}_2$ \\ 
 
 This captures 1, 2, 5 and 6 above.\\
 
-$\mathcal{L}_{gen} = \norm{D_A(a_{fake}) - 1}_2 + \norm{D_B(b_{fake}) - 1}_2$ \\
+$\mathcal{L}_{gen} = \norm{D_A(a_{fake}) - 0}_2 + \norm{D_B(b_{fake}) - 0}_2$ \\
 
 This captures 3  and 7 above.\\
 
@@ -223,7 +231,65 @@ where $\lambda$ is a parameter to control how much weight we want to put on the 
 \section{Data Collection}
 
 For the $summer \leftrightarrow winter$ and $apple \leftrightarrow orange$ transformations, we collect 
-the datasets from the original authors' source data \cite{data1}. For the font style transfer, we have written python programs (included in the github repository) to generate images of single uppercase English characters and lowercase words. We obtain the words vocabulary from here \cite{data2}.
+the datasets from the original authors' source data \cite{data1}. The \textit{summer2winter} dataset contains 1 train and 1 test images for summer and 1 train and 1 test images for winter. The \textit{apple2orange} dataset contains 1 train and 1 test images for apple and 1 train and 1 test images for orange.
+
+For the font style transfer, we have written python programs (included in the github repository) to generate images of single uppercase English characters and lowercase words. We obtain the words vocabulary from \cite{data2}. For the single uppercase character scenario, we generated 11 train images 10 test images for each character with random scaling and translation, so in total we got 286 train images and 260 test images. For the word scenario, we randomly sampled 1 words from \cite{data2} to create two disjoint datasets for training and testing, with 1 words for training and 1 words for testing. We also applied random scaling and translation to the words before generating the words. 
+
+\section{Network Architecture}
+We essentially rebuilt the same network architecture as the original authors \cite{cyclegan} have used.
+We will go over the architecture briefly here.
+
+\begin{figure*}[!htb]
+     \centering
+     \begin{subfigure}[b]{\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{generator}
+         \caption{Generator (number of channels at each stage shown in red)}
+         \label{fig:gen}
+     \end{subfigure}
+     \vfill
+     \begin{subfigure}[b]{0.6\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{res_block}
+         \caption{Resnet Block in Detail (number of channels at each stage shown in red)}
+         \label{fig:res}
+     \end{subfigure}
+     \vfill
+     \begin{subfigure}[b]{0.8\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{discriminator}
+         \caption{Discriminator  (number of channels at each stage shown in red)}
+         \label{fig:disc}
+     \end{subfigure}
+        \caption{Network Architecture}
+        \label{fig:architecture}
+\end{figure*} 
+
+\subsection{Generator}
+The generator has 3 main segments - Encoding, Transformation and Decoding. Figure 
+\ref{fig:architecture}\subref{fig:gen} The encoding part has 3 general convolutional
+layers each of which is a convolution followed by instance normalization \cite{cyclegan} and Relu.
+The first of these use a kernel size of 7 and the second and third a kernel size of 3. Reflection padding
+has been used on the input image to reduce artifacts. The transformation part is a series of 9 residual 
+blocks (shown in more detail in Figure \ref{fig:architecture}\subref{fig:res}). Finally, the decoding segment 
+is a couple of general deconvolutional layer (kernel sizes 3 and 2 respectively) followed by a convolution-
+only (kernel size 7). Each deconvolutional layer is a deconvolution followed by instance normalization and 
+Relu. The numbers of channels at all intermediate stage have been shown in red in \ref{fig:architecture}\subref{fig:gen}.
+
+\subsection{Discriminator}
+For the discriminator, we use the same $70 \times 70$ PatchGAN concept used in \cite{cyclegan}.
+It basically has 4 general convolutional layers each of which is a convolution followed by instance 
+normalization and a leaky relu with relu factor 0.2. These 4 layers are then followed by one single 
+convolution only layer. The discriminator architecture and the numbers of channels at all intermediate 
+stage have been shown in red in \ref{fig:architecture}\subref{fig:disc}.
+
+Notice that both the generator and the discriminator networks are end-to-end fully convolutional. Before 
+feeding our images to these networks, we resize them to $256 \times 256$. The output of the 
+discriminator is just a one single channel $30 \times 30$ feature map, which is compared against a $30 \times 30$ all 1's or all 0's tensor while calculating discriminator loss.
+
+\section{Experimentation}
+
+
 
 %-------------------------------------------------------------------------
 \subsection{Language}
