@@ -67,7 +67,6 @@
 \citation{data2}
 \citation{data2}
 \citation{cyclegan}
-\citation{cyclegan}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:gan_b}{{1a}{4323}{Generator $G_{A2B}$ takes an image $a_{real}$ from domain $A$ and outputs $a_{fake}$ which Discriminator $D_B$ tries to distinguish from actual images in domain $B$. Image $a_{fake}$ is then passed onto generator $G_{B2A}$ which generates $a_{cycle}$. This is used for calculating the \textit {cycle-consistency} loss.\relax }{figure.caption.1}{}}
 \newlabel{sub@fig:gan_b}{{a}{4323}{Generator $G_{A2B}$ takes an image $a_{real}$ from domain $A$ and outputs $a_{fake}$ which Discriminator $D_B$ tries to distinguish from actual images in domain $B$. Image $a_{fake}$ is then passed onto generator $G_{B2A}$ which generates $a_{cycle}$. This is used for calculating the \textit {cycle-consistency} loss.\relax }{figure.caption.1}{}}
@@ -76,24 +75,25 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Problem Formulation\relax }}{4323}{figure.caption.1}}
 \newlabel{fig:problem}{{1}{4323}{Problem Formulation\relax }{figure.caption.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Data Collection}{4323}{section.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Network Architecture}{4323}{section.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.\nobreakspace  {}Generator}{4323}{subsection.5.1}}
 \citation{cyclegan}
-\newlabel{fig:gen}{{2a}{4324}{Generator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
-\newlabel{sub@fig:gen}{{a}{4324}{Generator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
-\newlabel{fig:res}{{2b}{4324}{Resnet Block in Detail (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
-\newlabel{sub@fig:res}{{b}{4324}{Resnet Block in Detail (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
-\newlabel{fig:disc}{{2c}{4324}{Discriminator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
-\newlabel{sub@fig:disc}{{c}{4324}{Discriminator (number of channels at each stage shown in red)\relax }{figure.caption.2}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Network Architecture\relax }}{4324}{figure.caption.2}}
-\newlabel{fig:architecture}{{2}{4324}{Network Architecture\relax }{figure.caption.2}{}}
+\citation{cyclegan}
+\@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Network Architecture}{4324}{section.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.\nobreakspace  {}Generator}{4324}{subsection.5.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}\hskip -1em.\nobreakspace  {}Discriminator}{4324}{subsection.5.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.\nobreakspace  {}Experimentation}{4325}{section.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}\hskip -1em.\nobreakspace  {}Language}{4325}{subsection.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}\hskip -1em.\nobreakspace  {}Dual submission}{4325}{subsection.6.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}\hskip -1em.\nobreakspace  {}Paper length}{4325}{subsection.6.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}\hskip -1em.\nobreakspace  {}The ruler}{4325}{subsection.6.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}\hskip -1em.\nobreakspace  {}Mathematics}{4325}{subsection.6.5}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.\nobreakspace  {}Experimentation}{4324}{section.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}\hskip -1em.\nobreakspace  {}Language}{4324}{subsection.6.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}\hskip -1em.\nobreakspace  {}Dual submission}{4324}{subsection.6.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}\hskip -1em.\nobreakspace  {}Paper length}{4324}{subsection.6.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}\hskip -1em.\nobreakspace  {}The ruler}{4324}{subsection.6.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}\hskip -1em.\nobreakspace  {}Mathematics}{4324}{subsection.6.5}}
+\newlabel{fig:gen}{{2a}{4325}{Generator\relax }{figure.caption.2}{}}
+\newlabel{sub@fig:gen}{{a}{4325}{Generator\relax }{figure.caption.2}{}}
+\newlabel{fig:res}{{2b}{4325}{Resnet Block in Detail\relax }{figure.caption.2}{}}
+\newlabel{sub@fig:res}{{b}{4325}{Resnet Block in Detail\relax }{figure.caption.2}{}}
+\newlabel{fig:disc}{{2c}{4325}{Discriminator\relax }{figure.caption.2}{}}
+\newlabel{sub@fig:disc}{{c}{4325}{Discriminator\relax }{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Network Architecture. The numbers in red refers to the number of output channels of each block. The letter-number combination in blue in form k\textit  {x}s\textit  {y}p\textit  {z} beneath the blocks corresponds to the kernel size ($x$), stride ($y$) and padding ($z$). For example, k4s2p1 would mean a kernel size of $4 \times 4$, stride of 1 and padding of 1. If the padding is form $z-z$ , that means that a padding of $z$ is applied to the output as well (in addition to the input padding of $z$). The use of reflection padding has been indicated by the word Reflection in blue\relax }}{4325}{figure.caption.2}}
+\newlabel{fig:architecture}{{2}{4325}{Network Architecture. The numbers in red refers to the number of output channels of each block. The letter-number combination in blue in form k\textit {x}s\textit {y}p\textit {z} beneath the blocks corresponds to the kernel size ($x$), stride ($y$) and padding ($z$). For example, k4s2p1 would mean a kernel size of $4 \times 4$, stride of 1 and padding of 1. If the padding is form $z-z$ , that means that a padding of $z$ is applied to the output as well (in addition to the input padding of $z$). The use of reflection padding has been indicated by the word Reflection in blue\relax }{figure.caption.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.6}\hskip -1em.\nobreakspace  {}Blind review}{4325}{subsection.6.6}}
 \citation{Authors14}
 \citation{Authors14b}
@@ -102,21 +102,20 @@
 \citation{Alpher04}
 \citation{Alpher03}
 \citation{Alpher03}
-\citation{Alpher03}
-\citation{Alpher02}
-\citation{Authors14}
-\citation{Alpher02}
-\citation{Alpher03}
-\citation{Authors14}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \qopname  \relax o{sin}A = A \qopname  \relax o{sin}B$) may be included without an ugly clash.\relax }}{4326}{figure.caption.3}}
-\newlabel{fig:long}{{3}{4326}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
-\newlabel{fig:onecol}{{3}{4326}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.7}\hskip -1em.\nobreakspace  {}Miscellaneous}{4326}{subsection.6.7}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example of a short caption, which should be centered.\relax }}{4327}{figure.caption.4}}
-\newlabel{fig:short}{{4}{4327}{Example of a short caption, which should be centered.\relax }{figure.caption.4}{}}
+\citation{Alpher03}
+\citation{Alpher02}
+\citation{Authors14}
+\citation{Alpher02}
+\citation{Alpher03}
+\citation{Authors14}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \qopname  \relax o{sin}A = A \qopname  \relax o{sin}B$) may be included without an ugly clash.\relax }}{4327}{figure.caption.3}}
+\newlabel{fig:long}{{3}{4327}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
+\newlabel{fig:onecol}{{3}{4327}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {7}\hskip -1em.\nobreakspace  {}Formatting your paper}{4327}{section.7}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}\hskip -1em.\nobreakspace  {}Margins and page numbering}{4327}{subsection.7.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2}\hskip -1em.\nobreakspace  {}Type-style and fonts}{4327}{subsection.7.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}\hskip -1em.\nobreakspace  {}Footnotes}{4327}{subsection.7.3}}
 \citation{Authors14}
 \bibstyle{ieee}
 \bibdata{egbib}
@@ -131,6 +130,13 @@
 \bibcite{rel3}{9}
 \bibcite{pix2pix}{10}
 \bibcite{rel4}{11}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example of a short caption, which should be centered.\relax }}{4328}{figure.caption.4}}
+\newlabel{fig:short}{{4}{4328}{Example of a short caption, which should be centered.\relax }{figure.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results. Ours is better.\relax }}{4328}{table.caption.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}\hskip -1em.\nobreakspace  {}References}{4328}{subsection.7.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}\hskip -1em.\nobreakspace  {}Illustrations, graphs, and photographs}{4328}{subsection.7.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}\hskip -1em.\nobreakspace  {}Color}{4328}{subsection.7.6}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}\hskip -1em.\nobreakspace  {}Final copy}{4328}{section.8}}
 \bibcite{rel12}{12}
 \bibcite{rel5}{13}
 \bibcite{rel14}{14}
@@ -142,12 +148,6 @@
 \bibcite{rel17}{20}
 \bibcite{rel23}{21}
 \bibcite{data2}{22}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results. Ours is better.\relax }}{4328}{table.caption.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}\hskip -1em.\nobreakspace  {}Footnotes}{4328}{subsection.7.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}\hskip -1em.\nobreakspace  {}References}{4328}{subsection.7.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}\hskip -1em.\nobreakspace  {}Illustrations, graphs, and photographs}{4328}{subsection.7.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}\hskip -1em.\nobreakspace  {}Color}{4328}{subsection.7.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}\hskip -1em.\nobreakspace  {}Final copy}{4328}{section.8}}
 \bibcite{rel8}{23}
 \bibcite{rel9}{24}
 \bibcite{rel18}{25}

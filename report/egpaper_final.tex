@@ -231,63 +231,64 @@ where $\lambda$ is a parameter to control how much weight we want to put on the 
 \section{Data Collection}
 
 For the $summer \leftrightarrow winter$ and $apple \leftrightarrow orange$ transformations, we collect 
-the datasets from the original authors' source data \cite{data1}. The \textit{summer2winter} dataset contains 1 train and 1 test images for summer and 1 train and 1 test images for winter. The \textit{apple2orange} dataset contains 1 train and 1 test images for apple and 1 train and 1 test images for orange.
+the datasets from the original authors' source data \cite{data1}. The \textit{summer2winter} dataset contains 1231 train and 309 test images for summer and 962 train and 238 test images for winter. The \textit{apple2orange} dataset contains 995 train and 266 test images for apple and 1019 train and 248 test images for orange.
 
-For the font style transfer, we have written python programs (included in the github repository) to generate images of single uppercase English characters and lowercase words. We obtain the words vocabulary from \cite{data2}. For the single uppercase character scenario, we generated 11 train images 10 test images for each character with random scaling and translation, so in total we got 286 train images and 260 test images. For the word scenario, we randomly sampled 1 words from \cite{data2} to create two disjoint datasets for training and testing, with 1 words for training and 1 words for testing. We also applied random scaling and translation to the words before generating the words. 
+For the font style transfer, we have written python programs (included in the github repository) to generate images of single uppercase English characters and lowercase words. We obtain the words vocabulary from \cite{data2}. For the single uppercase character scenario, we generated 11 train images and 10 test images for each character with random scaling and translation, so in total we got 286 train images and 260 test images. For the word scenario, we randomly sampled 1981 words from \cite{data2} to create four disjoint datasets (sizes 500, 493, 496, 492) in a way that each of them has an approximately equal number of words starting with a certain character, to avoid bias as much as possible. We used the first 2 of these sets to generate images with Arial font and use those for training and testing respectively. Similarly, we used the latter 2 sets to generate training and testing images for Times New Roman font. We also applied random scaling and translation to the words before generating the words. 
 
 \section{Network Architecture}
-We essentially rebuilt the same network architecture as the original authors \cite{cyclegan} have used.
-We will go over the architecture briefly here.
+We essentially rebuilt the same network architecture as the original authors 
+\cite{cyclegan} have used. The architecture is shown in Figure \ref{fig:architecture}. 
+The numbers of channels at all intermediate stage have been shown in red, as well as 
+the kernel, stride and padding size in blue. If the type of padding is Reflection 
+padding, it has been used indicated in the figure in the corresponding blocks, 
+otherwise padding is done with 0 values everywhere else. 
 
 \begin{figure*}[!htb]
      \centering
      \begin{subfigure}[b]{\textwidth}
          \centering
          \includegraphics[width=\textwidth]{generator}
-         \caption{Generator (number of channels at each stage shown in red)}
+         \caption{Generator}
          \label{fig:gen}
      \end{subfigure}
      \vfill
      \begin{subfigure}[b]{0.6\textwidth}
          \centering
          \includegraphics[width=\textwidth]{res_block}
-         \caption{Resnet Block in Detail (number of channels at each stage shown in red)}
+         \caption{Resnet Block in Detail}
          \label{fig:res}
      \end{subfigure}
      \vfill
      \begin{subfigure}[b]{0.8\textwidth}
          \centering
          \includegraphics[width=\textwidth]{discriminator}
-         \caption{Discriminator  (number of channels at each stage shown in red)}
+         \caption{Discriminator}
          \label{fig:disc}
      \end{subfigure}
-        \caption{Network Architecture}
+        \caption{Network Architecture. The numbers in red refers to the number of output channels of each block. The letter-number combination in blue in form k\textit{x}s\textit{y}p\textit{z} beneath the blocks corresponds to the kernel size ($x$), stride ($y$) and padding ($z$). For example, k4s2p1 would mean a kernel size of $4 \times 4$, stride of 1 and padding of 1. If the padding is form $z-z$ , that means that a padding of $z$ is applied to the output as well (in addition to the input padding of $z$). The use of reflection padding has been indicated by the word Reflection in blue}
         \label{fig:architecture}
 \end{figure*} 
 
 \subsection{Generator}
-The generator has 3 main segments - Encoding, Transformation and Decoding. Figure 
+The generator has 3 main segments - Encoding, Transformation an Decoding. Figure 
 \ref{fig:architecture}\subref{fig:gen} The encoding part has 3 general convolutional
-layers each of which is a convolution followed by instance normalization \cite{cyclegan} and Relu.
-The first of these use a kernel size of 7 and the second and third a kernel size of 3. Reflection padding
-has been used on the input image to reduce artifacts. The transformation part is a series of 9 residual 
-blocks (shown in more detail in Figure \ref{fig:architecture}\subref{fig:res}). Finally, the decoding segment 
-is a couple of general deconvolutional layer (kernel sizes 3 and 2 respectively) followed by a convolution-
-only (kernel size 7). Each deconvolutional layer is a deconvolution followed by instance normalization and 
-Relu. The numbers of channels at all intermediate stage have been shown in red in \ref{fig:architecture}\subref{fig:gen}.
+layers each of which is a convolution followed by instance normalization \cite{cyclegan} and Relu.b The transformation part is a series of 9 residual 
+blocks (shown in more detail in Figure \ref{fig:architecture}\subref{fig:res}). Finally, the decoding segment is a couple of general deconvolutional layer followed by a convolution+tanh(kernel size 7). Each general deconvolutional layer is a deconvolution followed by instance normalization and Relu. The details have benn shown in Figure \ref{fig:architecture}\subref{fig:gen}.
 
 \subsection{Discriminator}
 For the discriminator, we use the same $70 \times 70$ PatchGAN concept used in \cite{cyclegan}.
-It basically has 4 general convolutional layers each of which is a convolution followed by instance 
-normalization and a leaky relu with relu factor 0.2. These 4 layers are then followed by one single 
-convolution only layer. The discriminator architecture and the numbers of channels at all intermediate 
-stage have been shown in red in \ref{fig:architecture}\subref{fig:disc}.
+It basically has 4 general convolutional layers. The first one is a convolution plus Leaky Relu, while the other three are convolution plus instance normalization plus Leaky Relu. These 4 layers are then followed by one single 
+convolution only layer. The details have been shown in red in Figure \ref{fig:architecture}\subref{fig:disc}.
 
 Notice that both the generator and the discriminator networks are end-to-end fully convolutional. Before 
-feeding our images to these networks, we resize them to $256 \times 256$. The output of the 
+feeding our images to these networks, we resize them to $256 \times 256$. The output size of the generator network would be of the same size as it's input ($256 \times 256 \times 3$). The output of the 
 discriminator is just a one single channel $30 \times 30$ feature map, which is compared against a $30 \times 30$ all 1's or all 0's tensor while calculating discriminator loss.
 
 \section{Experimentation}
+
+We train our networks on a GeForce 1080 GPU using the training data collected for $summer2winter$ and $apple2orange$, and also using the generated training data for our
+font style transfer.
+
 
 
 
