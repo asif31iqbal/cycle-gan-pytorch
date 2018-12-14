@@ -21,6 +21,17 @@ Authors.
 \newblock Face and Gesture submission ID 324. Supplied as additional material
   {\tt fg324.pdf}.
 
+\bibitem{rel13}
+Y.~Aytar, L.~Castrejon, C.~Vondrick, H.~Pirsiavash, and A.~Torralba.
+\newblock Cross-modal scene networks.
+\newblock {\em PAMI}, 2016.
+
+\bibitem{rel16}
+K.~Bousmalis, N.~Silberman, D.~Dohan, D.~Erhan, and D.~Krishnan.
+\newblock Unsupervised pixel-level domain adaptation with generative
+  adversarial networks.
+\newblock {\em CVPR}, 2017.
+
 \bibitem{rel1}
 D.~Eigen and R.~Fergus.
 \newblock Predicting depth, surface normal and semantic labels with a common
@@ -32,6 +43,22 @@ D.~Eigen and R.~Fergus.
 \newblock Predicting depth, surface normal and semantic labels with a common
   multi-scale.
 \newblock {\em ICCV}, 2015.
+
+\bibitem{rel22}
+L.~A. Gatys, A.~S. Ecker, and M.~Bethge.
+\newblock Image style transfer using convolutional neural networks.
+\newblock {\em CVPR}, 2016.
+
+\bibitem{rel19}
+C.~Godard, O.~M. Aodha, and G.~J. Brostow.
+\newblock Unsupervised monocular depth estimation with left-right consistency.
+\newblock {\em CVPR}, 2017.
+
+\bibitem{gan2}
+.~Goodfellow, J.~Pouget-Abadie, M.~Mirza, B.~Xu, D.~Warde-Farley, S.~Ozair,
+  A.~Courville, and Y.~Bengio.
+\newblock Generative adversarial nets.
+\newblock {\em NIPS}, 2014.
 
 \bibitem{gan1}
 I.~Goodfellow.
@@ -53,22 +80,55 @@ J.~Johnson, A.~Alahi, and L.~Fei-Fei.
 \newblock Perceptual losses for real-time style transfer and super-resolution.
 \newblock {\em ECCV}, 2016.
 
+\bibitem{rel12}
+L.~Karacan, Z.~Akata, A.~Erdem, and E.~Erdem.
+\newblock Learning to generate images of outdoor scenes from attributes and
+  semantic layouts.
+\newblock {\em arXiv preprint arXiv:1612.00215}, 2016.
+
 \bibitem{rel5}
 P.-Y. Laffont, Z.~Ren, X.~Tao, C.~Qian, and J.~Hays.
 \newblock Transient attributes for high-level understanding and editing of
   outdoor scenes.
 \newblock {\em ACM TOG, 33(4):149}, 2014.
 
+\bibitem{rel14}
+M.-Y. Liu, T.~Breuel, and J.~Kautz.
+\newblock Unsupervised image-to-image translation networks.
+\newblock {\em NIPS}, 2017.
+
+\bibitem{rel15}
+M.-Y. Liu and O.~Tuzel.
+\newblock Coupled generative adversarial.
+\newblock {\em NIPS}, 2016.
+
 \bibitem{rel6}
 J.~Long, E.~Shelhamer, and T.~Darrell.
 \newblock Fully convolutional networks for semantic segmentation.
 \newblock {\em CVPR}, 2015.
+
+\bibitem{rel11}
+P.~Sangkloy, J.~Lu, C.~Fang, F.~Yu, and J.~Hays.
+\newblock Scribbler:controlling deep image synthesis with sketch and color.
+\newblock {\em CVPR}, 2017.
 
 \bibitem{rel7}
 Y.~Shih, S.~Paris, F.~Durand, and W.~T. Freeman.
 \newblock Datadriven hallucination of different times of day from a single
   outdoor photo.
 \newblock {\em ACM TOG, 32(6):200}, 2013.
+
+\bibitem{rel17}
+A.~Shrivastava, T.~Pfister, O.~Tuzel, J.~Susskind, W.~Wang, and R.~Webb.
+\newblock Learning from simulated and unsupervised images through adversarial
+  training.
+\newblock {\em CVPR}, 2017.
+
+\bibitem{rel23}
+D.~Ulyanov, V.~Lebedev, A.~Vedaldi, and V.~Lempitsky.
+\newblock Texture networks: Feed-forward synthesis of textures and stylized
+  images.
+\newblock {\em ICML}, 2016.
 
 \bibitem{rel8}
 X.~Wang and A.~Gupta.
@@ -81,15 +141,20 @@ S.~Xie and Z.~Tu.
 \newblock Holistically-nested edge detection.
 \newblock {\em ICCV}, 2015.
 
+\bibitem{rel18}
+A.~P. Y.~Taigman and L.~Wolf.
+\newblock Unsupervised cross-domain image generation.
+\newblock {\em ICLR}, 2017.
+
+\bibitem{rel20}
+Z.~Yi, H.~Zhang, T.~Gong, Tan, and M.~Gong.
+\newblock Unsupervised dual learning for image-to-image translation.
+\newblock {\em ICCV}, 2017.
+
 \bibitem{rel10}
 R.~Zhang, P.~Isola, and A.~A. Efros.
 \newblock Colorful image colorization.
 \newblock {\em ECCV}, 2016.
-
-\bibitem{cycle2}
-T.~Zhou, P.~Krahenbuhl, M.~Aubry, Q.~Huang, and A.~A. Efros.
-\newblock Learning dense correspondence via 3dguided cycle consistency.
-\newblock {\em CVPR}, 2016.
 
 \bibitem{cyclegan}
 J.~Y. Zhu, T.~Park, P.~Isola, and A.~A. Efros.

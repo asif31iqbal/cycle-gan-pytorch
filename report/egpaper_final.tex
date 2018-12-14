@@ -6,6 +6,12 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{caption}
+\usepackage{subcaption}
+\graphicspath{{./images/helper/}{./images/apple2orange/}{./images/summer2winter/}}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\normm}[1]{\left\lVert\lVert#1\right\rVert\rVert}
 
 % Include other packages here, before hyperref.
 
@@ -99,7 +105,7 @@ The attempt with known fonts in this paper is a baby step towards the possible
 applicability of unknown font style transfers using cycle consistency.
 
 \section{Related Work}
-Over the last couple of years, Generative Adversarial Networks (GANs) \citep{gan1, gan2} have achieved
+Over the last couple of years, Generative Adversarial Networks (GANs) \cite{gan1, gan2} have achieved
 quite a bit of success in image generation. The key idea behind GAN's success is the \textit{adversarial 
 loss} that forces the generated image to be indistinguishable from the input image. In the CycleGAN case,
 the adversarial loss has been adopted in such a way that the generated images are indistinguishable from 
@@ -116,14 +122,108 @@ Unlike these approaches, the CycleGAN concept does not rely on any task specific
 measurements. It's more of a general purpose framework.
 
 As mentioned in the original paper, the idea of cycle consistency also has quite a bit of a history. Of these 
-works, \citep{rel19}, \cite{rel20} and \cite{21} are the ones that are conceptually most similar to 
+works, \cite{rel19}, \cite{rel20} and \cite{21} are the ones that are conceptually most similar to 
 CycleGANs.
 
 Neural Style Transfer \cite{rel4, rel22, rel23} is another family of work for image to image translation, 
 which synthesizes an image by combining the content of one image with the style of another image. 
 Again, this is a paired training concept while CycleGAN is unpaired.
 
- 
+The primary focus of CycleGAN and hence also of this paper, is learning the mapping between two two image collection, rather than between two specific images, by trying to capture correspondence between higher-level appearance structures. We try to apply the same idea in case of font style transfer.
+
+\section{Problem Formulation}
+
+We formulate our problem in the same way the original authors \cite{cyclegan} did, where the goal is to 
+learn mapping between two domains $A$ and $B$ given training samples $\{a_i\}_{i=1}^N$ where $a_i \in 
+A$ and $\{b_j\}_{j=1}^M$ where $b_j \in B$. The problem formulation has been depicted broadly in Figure 
+\ref{fig:problem}.
+
+\begin{figure*}[!htb]
+     \centering
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{gan_b}
+         \caption{Generator $G_{A2B}$ takes an image $a_{real}$ from domain $A$ and outputs $a_{fake}$ which Discriminator $D_B$ tries to distinguish from actual images in domain $B$. Image $a_{fake}$ is then passed onto generator $G_{B2A}$ which generates $a_{cycle}$. This is used for calculating the \textit{cycle-consistency} loss.}
+         \label{fig:gan_b}
+     \end{subfigure}
+     ~
+     \begin{subfigure}[b]{0.4\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{gan_a}
+         \caption{Generator $G_{B2A}$ takes an image $b_{real}$ from domain $B$ and outputs $a_{fake}$ which Discriminator $D_A$ tries to distinguish from actual images in domain A. Image $b_{fake}$ is then passed onto generator $G_{A2B}$ which generates $b_{cycle}$. This is used for calculating the \textit{cycle-consistency} loss.}
+         \label{fig:gan_a}
+     \end{subfigure}
+        \caption{Problem Formulation}
+        \label{fig:problem}
+\end{figure*} 
+
+We have two generators $G_A$ and $G_B$, and two discriminators $D_A$ and $D_B$. $G_{A2B}$ takes a real 
+image $a_{real}$ from domain $A$ and generates a fake image $b_{fake}$ in domain $B$, while $G_{B2A}$ 
+takes a real image $b_{real}$ from domain $B$ and generates a fake image $a_{fake}$ in domain $A$. 
+Discriminator $D_A$ tries to discriminate between the generated image $a_{fake}$ and real images in 
+domain $A$, while discriminator $D_B$ tries to discriminate between the generated image $b_fake$ and 
+real images in domain $B$. The generated fake image $b_{fake}$ is then fed back to $G_{B2A}$ to 
+generate an image $a_{cycle}$ in domain $A$, while the generated fake image $a_{fake}$ is then fed back 
+to $G_{A2B}$ to generate an image $b_{cycle}$ in domain $B$. 
+
+\subsection{Loss Functions}
+As can be seen from Figure \ref{fig:problem}, there are broadly 2 sorts of losses - \textit{adversarial 
+loss} (generator loss and discriminator loss) and \textit{cycle-consistency loss}. The adversarial loss 
+comprises of the losses incurred from the generators trying to fool the discriminators to take fake 
+images as real in their corresponding domain, and from the discriminators trying to distinguish fake 
+images from real ones. As discussed in \cite{cyclegan}, with large enough capacity, a network can map 
+the same set of input images to any random permutation of images in
+the target domain, where any of the learned mappings can
+induce an output distribution that matches the target distribution.
+Thus, adversarial losses alone cannot guarantee
+that the learned function can map an individual input $a_{real}$
+to a desired output $y_{fake}$. This is where the \textit{cycle-consistency} loss kicks in - the image 
+$a_{cycle}$ should be the same as image $a_{real}$, and the image $b_{cycle}$ should be the same as 
+image $b_{real}$.
+
+To be complete, the loss functions can be broken down into the following components:
+
+\begin{enumerate}
+\item $D_A$ must approve all the original images $a_{real}$ of the domain $A$
+\item $D_A$ must reject all the images $b_{fake}$ which are generated by $G_{B2A}$ to fool it
+\item $G_{B2A}$ must make $D_A$ approve all the generated images $b_{fake}$, so as to fool it
+\item Image $b_{cycle}$ must retain the property of original image $b_{real}$
+\item $D_B$ must approve all the original images $b_{real}$ of the domain $B$
+\item $D_B$ must reject all the images $a_{fake}$ which are generated by $G_{A2B}$ to fool it
+\item $G_{A2B}$ must make $D_B$ approve all the generated images $a_{fake}$, so as to fool it
+\item Image $a_{cycle}$ must retain the property of original image $a_{real}$
+\end{enumerate}
+
+In the above list, items $1, 2, 3, 5, 6$ and $7$ are adversarial components of the loss, while items 
+$4$ and $8$ a re the \textit{cycle-consistency} components.
+
+The original authors used $L_2$ (MSE) loss for the adversarial components, and $L_1$ loss for the 
+\textit{cycle-consistency} component since it earned them better results. We adhere to the same 
+principle for our work. The loss functions can be mathematically written as follows:\\
+
+
+$\mathcal{L}_{disc} = \norm{a_{real} - a_{fake}}_2 + \norm{b_{real} - b_{fake}}_2$ \\ 
+
+This captures 1, 2, 5 and 6 above.\\
+
+$\mathcal{L}_{gen} = \norm{D_A(a_{fake}) - 1}_2 + \norm{D_B(b_{fake}) - 1}_2$ \\
+
+This captures 3  and 7 above.\\
+
+$\mathcal{L}_{cycle} = \norm{a_{real} - a_{cycle}}_1  + \norm{b_{real} - b_{cycle}}_1$ \\ 
+
+This captures 4 and 8 above.\\
+
+So the total loss comes down to:
+
+$\mathcal{L}_{total} = \mathcal{L}_{disc} + \mathcal{L}_{gen} + \lambda\mathcal{L}_{cycle}$\\
+
+where $\lambda$ is a parameter to control how much weight we want to put on the \textit{cycle-consistency} as opposed to the adversarial behaviour.
+
+\section{Data Collection}
+
+For the $summer \leftrightarrow winter$ and $apple \leftrightarrow orange$ transformations, we collect 
+the datasets from the original authors' source data \cite{data1}. For the font style transfer, we have written python programs (included in the github repository) to generate images of single uppercase English characters and lowercase words. We obtain the words vocabulary from here \cite{data2}.
 
 %-------------------------------------------------------------------------
 \subsection{Language}

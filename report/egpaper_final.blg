@@ -3,46 +3,52 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: egpaper_final.aux
 The style file: ieee.bst
 Database file #1: egbib.bib
+Warning--I didn't find a database entry for "cycle2"
+Warning--I didn't find a database entry for "21"
 Warning--I didn't find a database entry for "Authors14b"
-You've used 18 entries,
+Name 1 in "Y. Taigman, A. Polyak, and L. Wolf" has a comma at the end for entry rel18
+while executing---line 1073 of file ieee.bst
+Name 1 in "Y. Taigman, A. Polyak, and L. Wolf" has a comma at the end for entry rel18
+while executing---line 1116 of file ieee.bst
+You've used 30 entries,
             2120 wiz_defined-function locations,
-            578 strings with 5608 characters,
-and the built_in function-call counts, 5107 in all, are:
-= -- 478
-> -- 311
+            621 strings with 7056 characters,
+and the built_in function-call counts, 8793 in all, are:
+= -- 806
+> -- 597
 < -- 0
-+ -- 123
-- -- 104
-* -- 333
-:= -- 942
-add.period$ -- 54
-call.type$ -- 18
-change.case$ -- 106
++ -- 235
+- -- 204
+* -- 591
+:= -- 1638
+add.period$ -- 90
+call.type$ -- 30
+change.case$ -- 192
 chr.to.int$ -- 0
-cite$ -- 18
-duplicate$ -- 180
-empty$ -- 342
-format.name$ -- 104
-if$ -- 1003
+cite$ -- 30
+duplicate$ -- 300
+empty$ -- 546
+format.name$ -- 204
+if$ -- 1709
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 17
-newline$ -- 93
-num.names$ -- 36
-pop$ -- 105
+int.to.str$ -- 30
+missing$ -- 29
+newline$ -- 153
+num.names$ -- 60
+pop$ -- 191
 preamble$ -- 1
-purify$ -- 88
+purify$ -- 162
 quote$ -- 0
-skip$ -- 130
+skip$ -- 216
 stack$ -- 0
-substring$ -- 166
-swap$ -- 18
+substring$ -- 226
+swap$ -- 30
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 72
+type$ -- 120
 warning$ -- 0
-while$ -- 42
-width$ -- 20
-write$ -- 185
-(There was 1 warning)
+while$ -- 66
+width$ -- 32
+write$ -- 305
+(There were 2 error messages)
