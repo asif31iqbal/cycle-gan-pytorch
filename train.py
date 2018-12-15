@@ -111,7 +111,7 @@ a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
 
 
-ckpt_dir = '{}/checkpoints/{}/lr002_l10_id'.format(args.root_dir, args.dataset)
+ckpt_dir = '{}/checkpoints/{}/lr002_l5'.format(args.root_dir, args.dataset)
 mkdir(ckpt_dir)
 try:
     ckpt = load_checkpoint(ckpt_dir)
@@ -128,13 +128,14 @@ except:
     print(' [*] No checkpoint!')
     start_epoch = 0
 
+print(start_epoch)
 
 a_test_real = torch.tensor(iter(a_test_loader).next()[0], requires_grad=False)
 b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grad=False)
 a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
 history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'gen_loss_total': [], 'disc_loss': []}
-history_dir = '{}/history/{}/lr002_l10_id'.format(args.root_dir, args.dataset)
+history_dir = '{}/history/{}/lr002_l5'.format(args.root_dir, args.dataset)
 mkdir(history_dir)
 
 # train
@@ -262,7 +263,7 @@ for epoch in range(start_epoch, args.epochs):
                              b_test_real, a_test_fake, b_test_cycle],
                             dim=0).data / 2.0 + 0.5
 
-            save_dir = '{}/sample_images/{}/lr002_l10_id'.format(args.root_dir, args.dataset)
+            save_dir = '{}/sample_images/{}/lr002_l5'.format(args.root_dir, args.dataset)
             mkdir(save_dir)
             torchvision.utils.save_image(pic,
                                          '{}/Epoch_({})_({}of{}).jpg'.format(save_dir,
@@ -319,3 +320,10 @@ with open('{}/full_history.pkl'.format(history_dir), 'wb') as f:
 # lr = 0.0002, lambda = 10
 # summer2winter lr = 0.0002, lambda =10, id_lambda = 5
 # font lr=0.0002, lambda = 10
+
+#ablation
+# all iterartions
+#apple2orange cycle loss 5 10
+#summer2winter id loss
+#font id loss
+#learning rate?

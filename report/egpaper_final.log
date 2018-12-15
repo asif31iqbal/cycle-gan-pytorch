@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.10.31)  14 DEC 2018 16:13
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.10.31)  14 DEC 2018 20:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -307,21 +307,21 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 (./egpaper_final.aux)
 \openout1 = `egpaper_final.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 33.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) ABD: EveryShipout initializing macros
@@ -366,7 +366,7 @@ Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box31
 Package atbegshi Info: Package `everyshi' patched.
-Package hyperref Info: Link coloring OFF on input line 32.
+Package hyperref Info: Link coloring OFF on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -376,28 +376,28 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count124
 )
-LaTeX Info: Redefining \ref on input line 32.
-LaTeX Info: Redefining \pageref on input line 32.
-LaTeX Info: Redefining \nameref on input line 32.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 55.
-LaTeX Font Info:    Try loading font information for U+msa on input line 55.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 56.
+LaTeX Font Info:    Try loading font information for U+msa on input line 56.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 55.
+LaTeX Font Info:    Try loading font information for U+msb on input line 56.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 55.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 56.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 57.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 58.
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
@@ -405,14 +405,14 @@ Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
 
-Underfull \hbox (badness 1158) in paragraph at lines 63--90
+Underfull \hbox (badness 1158) in paragraph at lines 64--91
 []\OT1/ptm/m/n/10 Image-to-image trans-la-tion is a class of vi-sion and
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 91.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
 
-LaTeX Warning: Citation `cycle2' on page 4321 undefined on input line 91.
+LaTeX Warning: Citation `cycle2' on page 4321 undefined on input line 92.
 
 
 Underfull \vbox (badness 4454) has occurred while \output is active []
@@ -422,22 +422,27 @@ Underfull \vbox (badness 4454) has occurred while \output is active []
 
 ]
 
-LaTeX Warning: Citation `21' on page 4322 undefined on input line 126.
+LaTeX Warning: Citation `21' on page 4322 undefined on input line 127.
 
 <./images/helper/gan_b.png, id=74, 251.94125pt x 150.5625pt>
 File: ./images/helper/gan_b.png Graphic file (type png)
 
 <use ./images/helper/gan_b.png>
-Package pdftex.def Info: ./images/helper/gan_b.png used on input line 146.
+Package pdftex.def Info: ./images/helper/gan_b.png used on input line 147.
 (pdftex.def)             Requested size: 198.73946pt x 118.76845pt.
 
 <./images/helper/gan_a.png, id=76, 251.43938pt x 150.5625pt>
 File: ./images/helper/gan_a.png Graphic file (type png)
 
 <use ./images/helper/gan_a.png>
-Package pdftex.def Info: ./images/helper/gan_a.png used on input line 153.
+Package pdftex.def Info: ./images/helper/gan_a.png used on input line 154.
 (pdftex.def)             Requested size: 198.73946pt x 119.00508pt.
  [4322]
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 215--216
 
  []
@@ -458,104 +463,328 @@ Underfull \hbox (badness 10000) in paragraph at lines 221--222
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 223--224
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 227--228
-
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4323 <./images/helper/gan_b.png> <./images/helper/gan_a.png>]
-<./images/helper/generator.png, id=125, 987.69pt x 314.17375pt>
+[4323 <./images/helper/gan_b.png> <./images/helper/gan_a.png>]
+<./images/helper/generator.png, id=126, 987.69pt x 314.17375pt>
 File: ./images/helper/generator.png Graphic file (type png)
 
 <use ./images/helper/generator.png>
-Package pdftex.def Info: ./images/helper/generator.png used on input line 250.
+Package pdftex.def Info: ./images/helper/generator.png used on input line 267.
 (pdftex.def)             Requested size: 496.85625pt x 158.04047pt.
 
-<./images/helper/res_block.png, id=126, 549.05125pt x 278.03876pt>
+<./images/helper/res_block.png, id=127, 549.05125pt x 278.03876pt>
 File: ./images/helper/res_block.png Graphic file (type png)
 
 <use ./images/helper/res_block.png>
-Package pdftex.def Info: ./images/helper/res_block.png used on input line 257.
+Package pdftex.def Info: ./images/helper/res_block.png used on input line 274.
 (pdftex.def)             Requested size: 298.11678pt x 150.97021pt.
 
-<./images/helper/discriminator.png, id=127, 674.52pt x 273.02pt>
+<./images/helper/discriminator.png, id=128, 674.52pt x 273.02pt>
 File: ./images/helper/discriminator.png Graphic file (type png)
 
 <use ./images/helper/discriminator.png>
 Package pdftex.def Info: ./images/helper/discriminator.png used on input line 2
-64.
+81.
 (pdftex.def)             Requested size: 397.48651pt x 160.88876pt.
- [4324]
+
+<./images/apple2orange/test_a_2_b_32.jpg, id=129, 778.91pt x 260.975pt>
+File: ./images/apple2orange/test_a_2_b_32.jpg Graphic file (type jpg)
+
+<use ./images/apple2orange/test_a_2_b_32.jpg>
+Package pdftex.def Info: ./images/apple2orange/test_a_2_b_32.jpg used on input 
+line 293.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/apple2orange/test_a_2_b_65.jpg, id=130, 778.91pt x 260.975pt>
+File: ./images/apple2orange/test_a_2_b_65.jpg Graphic file (type jpg)
+
+<use ./images/apple2orange/test_a_2_b_65.jpg>
+Package pdftex.def Info: ./images/apple2orange/test_a_2_b_65.jpg used on input 
+line 295.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/apple2orange/test_a_2_b_111.jpg, id=131, 778.91pt x 260.975pt>
+File: ./images/apple2orange/test_a_2_b_111.jpg Graphic file (type jpg)
+
+<use ./images/apple2orange/test_a_2_b_111.jpg>
+Package pdftex.def Info: ./images/apple2orange/test_a_2_b_111.jpg used on input
+ line 297.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/apple2orange/test_b_2_a_46.jpg, id=132, 778.91pt x 260.975pt>
+File: ./images/apple2orange/test_b_2_a_46.jpg Graphic file (type jpg)
+
+<use ./images/apple2orange/test_b_2_a_46.jpg>
+Package pdftex.def Info: ./images/apple2orange/test_b_2_a_46.jpg used on input 
+line 304.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/apple2orange/test_b_2_a_214.jpg, id=133, 778.91pt x 260.975pt>
+File: ./images/apple2orange/test_b_2_a_214.jpg Graphic file (type jpg)
+
+<use ./images/apple2orange/test_b_2_a_214.jpg>
+Package pdftex.def Info: ./images/apple2orange/test_b_2_a_214.jpg used on input
+ line 306.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/apple2orange/test_b_2_a_243.jpg, id=134, 778.91pt x 260.975pt>
+File: ./images/apple2orange/test_b_2_a_243.jpg Graphic file (type jpg)
+
+<use ./images/apple2orange/test_b_2_a_243.jpg>
+Package pdftex.def Info: ./images/apple2orange/test_b_2_a_243.jpg used on input
+ line 308.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/summer2winter/test_a_2_b_111(1).jpg, id=135, 778.91pt x 260.975pt>
+File: ./images/summer2winter/test_a_2_b_111(1).jpg Graphic file (type jpg)
+
+<use ./images/summer2winter/test_a_2_b_111(1).jpg>
+Package pdftex.def Info: ./images/summer2winter/test_a_2_b_111(1).jpg used on i
+nput line 321.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/summer2winter/test_a_2_b_63.jpg, id=136, 778.91pt x 260.975pt>
+File: ./images/summer2winter/test_a_2_b_63.jpg Graphic file (type jpg)
+
+<use ./images/summer2winter/test_a_2_b_63.jpg>
+Package pdftex.def Info: ./images/summer2winter/test_a_2_b_63.jpg used on input
+ line 323.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/summer2winter/test_a_2_b_220.jpg, id=137, 778.91pt x 260.975pt>
+File: ./images/summer2winter/test_a_2_b_220.jpg Graphic file (type jpg)
+
+<use ./images/summer2winter/test_a_2_b_220.jpg>
+Package pdftex.def Info: ./images/summer2winter/test_a_2_b_220.jpg used on inpu
+t line 325.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/summer2winter/test_b_2_a_132.jpg, id=138, 778.91pt x 260.975pt>
+File: ./images/summer2winter/test_b_2_a_132.jpg Graphic file (type jpg)
+
+<use ./images/summer2winter/test_b_2_a_132.jpg>
+Package pdftex.def Info: ./images/summer2winter/test_b_2_a_132.jpg used on inpu
+t line 332.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/summer2winter/test_b_2_a_168.jpg, id=139, 778.91pt x 260.975pt>
+File: ./images/summer2winter/test_b_2_a_168.jpg Graphic file (type jpg)
+
+<use ./images/summer2winter/test_b_2_a_168.jpg>
+Package pdftex.def Info: ./images/summer2winter/test_b_2_a_168.jpg used on inpu
+t line 334.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/summer2winter/test_b_2_a_211.jpg, id=140, 778.91pt x 260.975pt>
+File: ./images/summer2winter/test_b_2_a_211.jpg Graphic file (type jpg)
+
+<use ./images/summer2winter/test_b_2_a_211.jpg>
+Package pdftex.def Info: ./images/summer2winter/test_b_2_a_211.jpg used on inpu
+t line 336.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_a_2_b_4.jpg, id=141, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_a_2_b_4.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_a_2_b_4.jpg>
+Package pdftex.def Info: ./images/arial2times/test_a_2_b_4.jpg used on input li
+ne 349.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_a_2_b_32(1).jpg, id=142, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_a_2_b_32(1).jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_a_2_b_32(1).jpg>
+Package pdftex.def Info: ./images/arial2times/test_a_2_b_32(1).jpg used on inpu
+t line 351.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_a_2_b_40.jpg, id=143, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_a_2_b_40.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_a_2_b_40.jpg>
+Package pdftex.def Info: ./images/arial2times/test_a_2_b_40.jpg used on input l
+ine 353.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_a_2_b_145.jpg, id=144, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_a_2_b_145.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_a_2_b_145.jpg>
+Package pdftex.def Info: ./images/arial2times/test_a_2_b_145.jpg used on input 
+line 355.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_a_2_b_206.jpg, id=145, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_a_2_b_206.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_a_2_b_206.jpg>
+Package pdftex.def Info: ./images/arial2times/test_a_2_b_206.jpg used on input 
+line 357.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_b_2_a_94.jpg, id=146, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_b_2_a_94.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_b_2_a_94.jpg>
+Package pdftex.def Info: ./images/arial2times/test_b_2_a_94.jpg used on input l
+ine 364.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_b_2_a_117.jpg, id=147, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_b_2_a_117.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_b_2_a_117.jpg>
+Package pdftex.def Info: ./images/arial2times/test_b_2_a_117.jpg used on input 
+line 366.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_b_2_a_136.jpg, id=148, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_b_2_a_136.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_b_2_a_136.jpg>
+Package pdftex.def Info: ./images/arial2times/test_b_2_a_136.jpg used on input 
+line 368.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_b_2_a_160.jpg, id=149, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_b_2_a_160.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_b_2_a_160.jpg>
+Package pdftex.def Info: ./images/arial2times/test_b_2_a_160.jpg used on input 
+line 370.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times/test_b_2_a_171.jpg, id=150, 778.91pt x 260.975pt>
+File: ./images/arial2times/test_b_2_a_171.jpg Graphic file (type jpg)
+
+<use ./images/arial2times/test_b_2_a_171.jpg>
+Package pdftex.def Info: ./images/arial2times/test_b_2_a_171.jpg used on input 
+line 372.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_a_2_b_31.jpg, id=151, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_a_2_b_31.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_a_2_b_31.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_a_2_b_31.jpg used on in
+put line 385.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_a_2_b_55.jpg, id=152, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_a_2_b_55.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_a_2_b_55.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_a_2_b_55.jpg used on in
+put line 387.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_a_2_b_341.jpg, id=153, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_a_2_b_341.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_a_2_b_341.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_a_2_b_341.jpg used on i
+nput line 389.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_a_2_b_385.jpg, id=154, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_a_2_b_385.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_a_2_b_385.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_a_2_b_385.jpg used on i
+nput line 391.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_a_2_b_490.jpg, id=155, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_a_2_b_490.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_a_2_b_490.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_a_2_b_490.jpg used on i
+nput line 393.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_b_2_a_202.jpg, id=156, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_b_2_a_202.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_b_2_a_202.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_b_2_a_202.jpg used on i
+nput line 400.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_b_2_a_420.jpg, id=157, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_b_2_a_420.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_b_2_a_420.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_b_2_a_420.jpg used on i
+nput line 402.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_b_2_a_436.jpg, id=158, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_b_2_a_436.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_b_2_a_436.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_b_2_a_436.jpg used on i
+nput line 404.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_b_2_a_473.jpg, id=159, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_b_2_a_473.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_b_2_a_473.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_b_2_a_473.jpg used on i
+nput line 406.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+<./images/arial2times_word/test_b_2_a_492.jpg, id=160, 778.91pt x 260.975pt>
+File: ./images/arial2times_word/test_b_2_a_492.jpg Graphic file (type jpg)
+
+<use ./images/arial2times_word/test_b_2_a_492.jpg>
+Package pdftex.def Info: ./images/arial2times_word/test_b_2_a_492.jpg used on i
+nput line 408.
+(pdftex.def)             Requested size: 219.11456pt x 73.41098pt.
+
+Overfull \hbox (8.00375pt too wide) in paragraph at lines 441--454
+ [] 
+ []
+
+(./egpaper_final.bbl [4324]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \vbox (11.5032pt too high) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4325 <./images/helper/generator.png> <./images/helper/res_block.png> <./image
+s/helper/discriminator.png>]
+Underfull \vbox (badness 5893) has occurred while \output is active []
 
 
-[4325 <./images/helper/generator.png> <./images/helper/res_block.png> <./images
-/helper/discriminator.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-LaTeX Warning: Citation `Authors14' on page 4326 undefined on input line 408.
-
-
-LaTeX Warning: Citation `Authors14b' on page 4326 undefined on input line 420.
-
-
-LaTeX Warning: Citation `Alpher02' on page 4326 undefined on input line 492.
-
-
-LaTeX Warning: Citation `Alpher03' on page 4326 undefined on input line 493.
-
-
-LaTeX Warning: Citation `Alpher04' on page 4326 undefined on input line 493.
-
-
-LaTeX Warning: Citation `Alpher03' on page 4326 undefined on input line 495.
-
-
-LaTeX Warning: Citation `Alpher03' on page 4326 undefined on input line 496.
-
-[4326]
-
-LaTeX Warning: Citation `Alpher03' on page 4327 undefined on input line 501.
-
-
-LaTeX Warning: Citation `Alpher02' on page 4327 undefined on input line 501.
-
-
-LaTeX Warning: Citation `Authors14' on page 4327 undefined on input line 501.
-
-
-LaTeX Warning: Citation `Alpher02' on page 4327 undefined on input line 502.
-
-
-LaTeX Warning: Citation `Alpher03' on page 4327 undefined on input line 502.
-
-
-LaTeX Warning: Citation `Authors14' on page 4327 undefined on input line 502.
-
-[4327]
-
-LaTeX Warning: Citation `Authors14' on page 4328 undefined on input line 612.
-
-(./egpaper_final.bbl
+ [4326 <./images/apple2orange/test_a_2_b_32.jpg> <./images/apple2orange/test_a_
+2_b_65.jpg> <./images/apple2orange/test_a_2_b_111.jpg> <./images/apple2orange/t
+est_b_2_a_46.jpg> <./images/apple2orange/test_b_2_a_214.jpg> <./images/apple2or
+ange/test_b_2_a_243.jpg> <./images/summer2winter/test_a_2_b_111(1).jpg> <./imag
+es/summer2winter/test_a_2_b_63.jpg> <./images/summer2winter/test_a_2_b_220.jpg>
+ <./images/summer2winter/test_b_2_a_132.jpg> <./images/summer2winter/test_b_2_a
+_168.jpg> <./images/summer2winter/test_b_2_a_211.jpg>]
 Underfull \hbox (badness 3492) in paragraph at lines 42--46
 []\OT1/ptm/m/n/9 I. Good-fel-low, J. Pouget-Abadie, M. Mirza, B. Xu,
  []
 
-[4328]
+
 Underfull \hbox (badness 10000) in paragraph at lines 90--94
 \OT1/pcr/m/n/9 berkeley . edu / []taesung _ park / CycleGAN /
  []
 
-
+[4327 <./images/arial2times/test_a_2_b_4.jpg> <./images/arial2times/test_a_2_b_
+32(1).jpg> <./images/arial2times/test_a_2_b_40.jpg> <./images/arial2times/test_
+a_2_b_145.jpg> <./images/arial2times/test_a_2_b_206.jpg> <./images/arial2times/
+test_b_2_a_94.jpg> <./images/arial2times/test_b_2_a_117.jpg> <./images/arial2ti
+mes/test_b_2_a_136.jpg> <./images/arial2times/test_b_2_a_160.jpg> <./images/ari
+al2times/test_b_2_a_171.jpg>]
 Underfull \hbox (badness 10000) in paragraph at lines 119--123
 []\OT1/ptm/m/n/9 I. Uni-ver-sity of Cal-i-for-nia.  Uci bag-of-words
  []
@@ -571,30 +800,35 @@ Underfull \hbox (badness 10000) in paragraph at lines 119--123
 \OT1/pcr/m/n/9 edu / ml / machine-[]learning-[]databases /
  []
 
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 671.
- [4329
 
+Underfull \vbox (badness 1210) has occurred while \output is active []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 480.
+ [4328 <./images/arial2times_word/test_a_2_b_31.jpg> <./images/arial2times_word
+/test_a_2_b_55.jpg> <./images/arial2times_word/test_a_2_b_341.jpg> <./images/ar
+ial2times_word/test_a_2_b_385.jpg> <./images/arial2times_word/test_a_2_b_490.jp
+g> <./images/arial2times_word/test_b_2_a_202.jpg> <./images/arial2times_word/te
+st_b_2_a_420.jpg> <./images/arial2times_word/test_b_2_a_436.jpg> <./images/aria
+l2times_word/test_b_2_a_473.jpg> <./images/arial2times_word/test_b_2_a_492.jpg>
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 671.
- (./egpaper_final.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 671.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 671.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 480.
+
+(./egpaper_final.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 480.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 480.
 
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 671.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 480.
  ) 
 Here is how much of TeX's memory you used:
- 7501 strings out of 494985
- 111307 string characters out of 6180355
- 203147 words of memory out of 5000000
- 10525 multiletter control sequences out of 15000+600000
- 35433 words of font info for 83 fonts, out of 8000000 for 9000
+ 7648 strings out of 494985
+ 117826 string characters out of 6180355
+ 212030 words of memory out of 5000000
+ 10656 multiletter control sequences out of 15000+600000
+ 28073 words of font info for 69 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  36i,15n,38p,1171b,514s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
@@ -605,15 +839,15 @@ ype1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
 sfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/times/utmri8a.pfb>
-Output written on egpaper_final.pdf (9 pages, 376660 bytes).
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
+w/times/utmri8a.pfb>
+Output written on egpaper_final.pdf (8 pages, 1215504 bytes).
 PDF statistics:
- 266 PDF objects out of 1000 (max. 8388607)
- 229 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 282 PDF objects out of 1000 (max. 8388607)
+ 214 compressed objects within 3 object streams
+ 64 named destinations out of 1000 (max. 500000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

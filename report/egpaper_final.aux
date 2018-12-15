@@ -63,10 +63,10 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2}\hskip -1em.\nobreakspace  {}Related Work}{4322}{section.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}\hskip -1em.\nobreakspace  {}Problem Formulation}{4322}{section.3}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}\hskip -1em.\nobreakspace  {}Loss Functions}{4322}{subsection.3.1}}
+\citation{cyclegan}
 \citation{data1}
 \citation{data2}
 \citation{data2}
-\citation{cyclegan}
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:gan_b}{{1a}{4323}{Generator $G_{A2B}$ takes an image $a_{real}$ from domain $A$ and outputs $a_{fake}$ which Discriminator $D_B$ tries to distinguish from actual images in domain $B$. Image $a_{fake}$ is then passed onto generator $G_{B2A}$ which generates $a_{cycle}$. This is used for calculating the \textit {cycle-consistency} loss.\relax }{figure.caption.1}{}}
 \newlabel{sub@fig:gan_b}{{a}{4323}{Generator $G_{A2B}$ takes an image $a_{real}$ from domain $A$ and outputs $a_{fake}$ which Discriminator $D_B$ tries to distinguish from actual images in domain $B$. Image $a_{fake}$ is then passed onto generator $G_{B2A}$ which generates $a_{cycle}$. This is used for calculating the \textit {cycle-consistency} loss.\relax }{figure.caption.1}{}}
@@ -77,15 +77,22 @@
 \@writefile{toc}{\contentsline {section}{\numberline {4}\hskip -1em.\nobreakspace  {}Data Collection}{4323}{section.4}}
 \citation{cyclegan}
 \citation{cyclegan}
+\citation{cyclegan}
+\citation{cyclegan}
+\citation{cyclegan}
+\bibstyle{ieee}
+\bibdata{egbib}
+\bibcite{rel13}{1}
+\bibcite{rel16}{2}
 \@writefile{toc}{\contentsline {section}{\numberline {5}\hskip -1em.\nobreakspace  {}Network Architecture}{4324}{section.5}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}\hskip -1em.\nobreakspace  {}Generator}{4324}{subsection.5.1}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}\hskip -1em.\nobreakspace  {}Discriminator}{4324}{subsection.5.2}}
 \@writefile{toc}{\contentsline {section}{\numberline {6}\hskip -1em.\nobreakspace  {}Experimentation}{4324}{section.6}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}\hskip -1em.\nobreakspace  {}Language}{4324}{subsection.6.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}\hskip -1em.\nobreakspace  {}Dual submission}{4324}{subsection.6.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}\hskip -1em.\nobreakspace  {}Paper length}{4324}{subsection.6.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}\hskip -1em.\nobreakspace  {}The ruler}{4324}{subsection.6.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}\hskip -1em.\nobreakspace  {}Mathematics}{4324}{subsection.6.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}\hskip -1em.\nobreakspace  {}Training}{4324}{subsection.6.1}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Training Times for different domains\relax }}{4324}{table.caption.7}}
+\newlabel{table:train}{{1}{4324}{Training Times for different domains\relax }{table.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}\hskip -1em.\nobreakspace  {}Evaluation}{4324}{subsection.6.2}}
+\bibcite{rel1}{3}
 \newlabel{fig:gen}{{2a}{4325}{Generator\relax }{figure.caption.2}{}}
 \newlabel{sub@fig:gen}{{a}{4325}{Generator\relax }{figure.caption.2}{}}
 \newlabel{fig:res}{{2b}{4325}{Resnet Block in Detail\relax }{figure.caption.2}{}}
@@ -94,49 +101,26 @@
 \newlabel{sub@fig:disc}{{c}{4325}{Discriminator\relax }{figure.caption.2}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Network Architecture. The numbers in red refers to the number of output channels of each block. The letter-number combination in blue in form k\textit  {x}s\textit  {y}p\textit  {z} beneath the blocks corresponds to the kernel size ($x$), stride ($y$) and padding ($z$). For example, k4s2p1 would mean a kernel size of $4 \times 4$, stride of 1 and padding of 1. If the padding is form $z-z$ , that means that a padding of $z$ is applied to the output as well (in addition to the input padding of $z$). The use of reflection padding has been indicated by the word Reflection in blue\relax }}{4325}{figure.caption.2}}
 \newlabel{fig:architecture}{{2}{4325}{Network Architecture. The numbers in red refers to the number of output channels of each block. The letter-number combination in blue in form k\textit {x}s\textit {y}p\textit {z} beneath the blocks corresponds to the kernel size ($x$), stride ($y$) and padding ($z$). For example, k4s2p1 would mean a kernel size of $4 \times 4$, stride of 1 and padding of 1. If the padding is form $z-z$ , that means that a padding of $z$ is applied to the output as well (in addition to the input padding of $z$). The use of reflection padding has been indicated by the word Reflection in blue\relax }{figure.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.6}\hskip -1em.\nobreakspace  {}Blind review}{4325}{subsection.6.6}}
-\citation{Authors14}
-\citation{Authors14b}
-\citation{Alpher02}
-\citation{Alpher03}
-\citation{Alpher04}
-\citation{Alpher03}
-\citation{Alpher03}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.7}\hskip -1em.\nobreakspace  {}Miscellaneous}{4326}{subsection.6.7}}
-\citation{Alpher03}
-\citation{Alpher02}
-\citation{Authors14}
-\citation{Alpher02}
-\citation{Alpher03}
-\citation{Authors14}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \qopname  \relax o{sin}A = A \qopname  \relax o{sin}B$) may be included without an ugly clash.\relax }}{4327}{figure.caption.3}}
-\newlabel{fig:long}{{3}{4327}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
-\newlabel{fig:onecol}{{3}{4327}{Example of caption. It is set in Roman so that mathematics (always set in Roman: $B \sin A = A \sin B$) may be included without an ugly clash.\relax }{figure.caption.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}\hskip -1em.\nobreakspace  {}Formatting your paper}{4327}{section.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}\hskip -1em.\nobreakspace  {}Margins and page numbering}{4327}{subsection.7.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}\hskip -1em.\nobreakspace  {}Type-style and fonts}{4327}{subsection.7.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}\hskip -1em.\nobreakspace  {}Footnotes}{4327}{subsection.7.3}}
-\citation{Authors14}
-\bibstyle{ieee}
-\bibdata{egbib}
-\bibcite{rel13}{1}
-\bibcite{rel16}{2}
-\bibcite{rel1}{3}
 \bibcite{rel2}{4}
 \bibcite{rel22}{5}
 \bibcite{rel19}{6}
 \bibcite{gan1}{7}
+\newlabel{fig:apple2orange}{{3a}{4326}{$Apple \rightarrow Orange \rightarrow Apple$\relax }{figure.caption.3}{}}
+\newlabel{sub@fig:apple2orange}{{a}{4326}{$Apple \rightarrow Orange \rightarrow Apple$\relax }{figure.caption.3}{}}
+\newlabel{fig:orange2apple}{{3b}{4326}{$Orange \rightarrow Apple \rightarrow Orange$\relax }{figure.caption.3}{}}
+\newlabel{sub@fig:orange2apple}{{b}{4326}{$Orange \rightarrow Apple \rightarrow Orange$\relax }{figure.caption.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces $Apple \leftrightarrow Orange$\relax }}{4326}{figure.caption.3}}
+\newlabel{fig:orange22apple}{{3}{4326}{$Apple \leftrightarrow Orange$\relax }{figure.caption.3}{}}
+\newlabel{fig:summer2winter}{{4a}{4326}{$Summer \rightarrow Winter \rightarrow Summer$\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:summer2winter}{{a}{4326}{$Summer \rightarrow Winter \rightarrow Summer$\relax }{figure.caption.4}{}}
+\newlabel{fig:winter2summer}{{4b}{4326}{$Winter \rightarrow Summer \rightarrow Winter$\relax }{figure.caption.4}{}}
+\newlabel{sub@fig:winter2summer}{{b}{4326}{$Winter \rightarrow Summer \rightarrow Winter$\relax }{figure.caption.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces $Summer \leftrightarrow Winter$\relax }}{4326}{figure.caption.4}}
+\newlabel{fig:summer22winter}{{4}{4326}{$Summer \leftrightarrow Winter$\relax }{figure.caption.4}{}}
 \bibcite{gan2}{8}
 \bibcite{rel3}{9}
 \bibcite{pix2pix}{10}
 \bibcite{rel4}{11}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Example of a short caption, which should be centered.\relax }}{4328}{figure.caption.4}}
-\newlabel{fig:short}{{4}{4328}{Example of a short caption, which should be centered.\relax }{figure.caption.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Results. Ours is better.\relax }}{4328}{table.caption.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}\hskip -1em.\nobreakspace  {}References}{4328}{subsection.7.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}\hskip -1em.\nobreakspace  {}Illustrations, graphs, and photographs}{4328}{subsection.7.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}\hskip -1em.\nobreakspace  {}Color}{4328}{subsection.7.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {8}\hskip -1em.\nobreakspace  {}Final copy}{4328}{section.8}}
 \bibcite{rel12}{12}
 \bibcite{rel5}{13}
 \bibcite{rel14}{14}
@@ -145,6 +129,12 @@
 \bibcite{data1}{17}
 \bibcite{rel11}{18}
 \bibcite{rel7}{19}
+\newlabel{fig:arial2times}{{5a}{4327}{$Arial \rightarrow Times \rightarrow Arial$\relax }{figure.caption.5}{}}
+\newlabel{sub@fig:arial2times}{{a}{4327}{$Arial \rightarrow Times \rightarrow Arial$\relax }{figure.caption.5}{}}
+\newlabel{fig:times2arial}{{5b}{4327}{$Times \rightarrow Arial \rightarrow Times$\relax }{figure.caption.5}{}}
+\newlabel{sub@fig:times2arial}{{b}{4327}{$Times \rightarrow Arial \rightarrow Times$\relax }{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces $Arial \leftrightarrow Times$\relax }}{4327}{figure.caption.5}}
+\newlabel{fig:arial22times}{{5}{4327}{$Arial \leftrightarrow Times$\relax }{figure.caption.5}{}}
 \bibcite{rel17}{20}
 \bibcite{rel23}{21}
 \bibcite{data2}{22}
@@ -154,3 +144,9 @@
 \bibcite{rel20}{26}
 \bibcite{rel10}{27}
 \bibcite{cyclegan}{28}
+\newlabel{fig:arial2times_word}{{6a}{4328}{$Arial$ word $\rightarrow Times$ word$\rightarrow Arial$ word\relax }{figure.caption.6}{}}
+\newlabel{sub@fig:arial2times_word}{{a}{4328}{$Arial$ word $\rightarrow Times$ word$\rightarrow Arial$ word\relax }{figure.caption.6}{}}
+\newlabel{fig:times2arial_word}{{6b}{4328}{$Times$ word $\rightarrow Arial$ word$\rightarrow Times$ word\relax }{figure.caption.6}{}}
+\newlabel{sub@fig:times2arial_word}{{b}{4328}{$Times$ word $\rightarrow Arial$ word$\rightarrow Times$ word\relax }{figure.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces $Arial$ word $\leftrightarrow Times$ word\relax }}{4328}{figure.caption.6}}
+\newlabel{fig:arial22times_word}{{6}{4328}{$Arial$ word $\leftrightarrow Times$ word\relax }{figure.caption.6}{}}
