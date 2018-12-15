@@ -29,7 +29,8 @@
 
 % Pages are numbered in submission mode, and unnumbered in camera-ready
 %\ifcvprfinal\pagestyle{empty}\fi
-\setcounter{page}{4321}
+\setcounter{page}{1}
+\hypersetup{draft}
 \begin{document}
 
 %%%%%%%%% TITLE
@@ -262,6 +263,7 @@ otherwise padding is done with 0 values everywhere else.
 
 \begin{figure*}[!htb]
      \centering
+     
      \begin{subfigure}[b]{\textwidth}
          \centering
          \includegraphics[width=\textwidth]{generator}
@@ -351,10 +353,10 @@ otherwise padding is done with 0 values everywhere else.
 		 \includegraphics[width=0.9\textwidth]{test_a_2_b_32(1)}\\
 		 \vspace{0.3cm}
 		 \includegraphics[width=0.9\textwidth]{test_a_2_b_40}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_a_2_b_145}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_a_2_b_206}
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_a_2_b_145}\\
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_a_2_b_206}
 		 \caption{$Arial \rightarrow Times \rightarrow Arial$}
          \label{fig:arial2times}
      \end{subfigure}
@@ -366,10 +368,10 @@ otherwise padding is done with 0 values everywhere else.
 		 \includegraphics[width=0.9\textwidth]{test_b_2_a_117}\\
 		 \vspace{0.3cm}
 		 \includegraphics[width=0.9\textwidth]{test_b_2_a_136}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_b_2_a_160}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_b_2_a_171}
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_b_2_a_160}\\
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_b_2_a_171}
 		 \caption{$Times \rightarrow Arial \rightarrow Times$}
          \label{fig:times2arial}
      \end{subfigure}
@@ -387,10 +389,10 @@ otherwise padding is done with 0 values everywhere else.
 		 \includegraphics[width=0.9\textwidth]{test_a_2_b_55}\\
 		 \vspace{0.3cm}
 		 \includegraphics[width=0.9\textwidth]{test_a_2_b_341}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_a_2_b_385}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_a_2_b_490}
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_a_2_b_385}\\
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_a_2_b_490}
 		 \caption{$Arial$ word $\rightarrow Times$ word$\rightarrow Arial$ word}
          \label{fig:arial2times_word}
      \end{subfigure}
@@ -402,10 +404,10 @@ otherwise padding is done with 0 values everywhere else.
 		 \includegraphics[width=0.9\textwidth]{test_b_2_a_420}\\
 		 \vspace{0.3cm}
 		 \includegraphics[width=0.9\textwidth]{test_b_2_a_436}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_b_2_a_473}\\
-		 \vspace{0.3cm}
-		 \includegraphics[width=0.9\textwidth]{test_b_2_a_492}
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_b_2_a_473}\\
+%		 \vspace{0.3cm}
+%		 \includegraphics[width=0.9\textwidth]{test_b_2_a_492}
 		 \caption{$Times$ word $\rightarrow Arial$ word$\rightarrow Times$ word}
          \label{fig:times2arial_word}
      \end{subfigure}
@@ -414,16 +416,88 @@ otherwise padding is done with 0 values everywhere else.
      \label{fig:arial22times_word}
 \end{figure*} 
 
+\begin{figure*}[!htb]
+     \centering
+     \begin{subfigure}[]{0.49\textwidth}
+         \centering
+         \includegraphics[width=0.9\textwidth]{test_a_2_b_33_i}\\
+         \vspace{0.3cm}
+		 \includegraphics[width=0.9\textwidth]{test_a_2_b_33}\\
+		 \caption{Learning rate 0.0002 (above) and 0.0004 (below)}
+         \label{fig:a2r_lr}
+     \end{subfigure}
+     ~
+     \begin{subfigure}[]{0.49\textwidth}
+         \centering
+         \includegraphics[width=0.9\textwidth]{test_a_2_b_48}\\
+         \vspace{0.3cm}
+		 \includegraphics[width=0.9\textwidth]{test_a_2_b_48_g}\\
+		 \caption{Identity loss not included (above) and included (below)}
+         \label{fig:s2w_id}
+     \end{subfigure}
+
+     \caption{Learning Rate and Identity loss ablation for $Apple \leftrightarrow Orange$ and $Summer \leftrightarrow Winter$}
+     \label{fig:ablation1}
+\end{figure*} 
+
+\begin{figure*}[!htb]
+     \centering
+     \begin{subfigure}[]{0.49\textwidth}
+         \centering
+         \includegraphics[width=0.9\textwidth]{test_a_2_b_96}\\
+         \vspace{0.3cm}
+		 \includegraphics[width=0.9\textwidth]{test_a_2_b_96_g}\\
+		 \caption{Learning rate 0.0004 (above) and 0.0002 (below)}
+         \label{fig:a2f_lr}
+     \end{subfigure}
+     ~
+     \begin{subfigure}[]{0.49\textwidth}
+         \centering
+         \includegraphics[width=0.9\textwidth]{test_a_2_b_115}\\
+         \vspace{0.3cm}
+		 \includegraphics[width=0.9\textwidth]{test_a_2_b_115_g}\\
+		 \caption{Identity loss not included (above) and included (below)}
+         \label{fig:a2f_id}
+     \end{subfigure}
+
+     \caption{Learning Rate and Identity loss ablation for $Arial \leftrightarrow Times$}
+     \label{fig:ablation2}
+\end{figure*} 
+
+\begin{figure*}[!htb]
+     \centering
+     \begin{subfigure}[]{0.49\textwidth}
+         \centering
+         \includegraphics[width=0.9\textwidth]{test_a_2_b_203}\\
+         \vspace{0.3cm}
+		 \includegraphics[width=0.9\textwidth]{test_a_2_b_203_g}\\
+		 \caption{Learning rate 0.0004 (above) and 0.0002 (below)}
+         \label{fig:a2f_w_lr}
+     \end{subfigure}
+     ~
+     \begin{subfigure}[]{0.49\textwidth}
+         \centering
+         \includegraphics[width=0.9\textwidth]{test_b_2_a_68}\\
+         \vspace{0.3cm}
+		 \includegraphics[width=0.9\textwidth]{test_b_2_a_68_g}\\
+		 \caption{Identity loss not included (above) and included (below)}
+         \label{fig:a2f_w_id}
+     \end{subfigure}
+
+     \caption{Learning Rate and Identity loss ablation for $Arial \, word \leftrightarrow Times \, word$}
+     \label{fig:ablation3}
+\end{figure*}
+
 \subsection{Generator}
 The generator has 3 main segments - Encoding, Transformation an Decoding. Figure 
-\ref{fig:architecture}\subref{fig:gen} The encoding part has 3 general convolutional
+\ref{fig:gen} The encoding part has 3 general convolutional
 layers each of which is a convolution followed by instance normalization \cite{cyclegan} and Relu.b The transformation part is a series of 9 residual 
-blocks (shown in more detail in Figure \ref{fig:architecture}\subref{fig:res}). Finally, the decoding segment is a couple of general deconvolutional layer followed by a convolution+tanh(kernel size 7). Each general deconvolutional layer is a deconvolution followed by instance normalization and Relu. The details have benn shown in Figure \ref{fig:architecture}\subref{fig:gen}.
+blocks (shown in more detail in Figure \ref{fig:res}). Finally, the decoding segment is a couple of general deconvolutional layer followed by a convolution+tanh(kernel size 7). Each general deconvolutional layer is a deconvolution followed by instance normalization and Relu. The details have been shown in Figure \ref{fig:gen}.
 
 \subsection{Discriminator}
 For the discriminator, we use the same $70 \times 70$ PatchGAN concept used in \cite{cyclegan}.
 It basically has 4 general convolutional layers. The first one is a convolution plus Leaky Relu, while the other three are convolution plus instance normalization plus Leaky Relu. These 4 layers are then followed by one single 
-convolution only layer. The details have been shown in red in Figure \ref{fig:architecture}\subref{fig:disc}.
+convolution only layer. The details have been shown in red in Figure \ref{fig:disc}.
 
 Notice that both the generator and the discriminator networks are end-to-end fully convolutional. Before 
 feeding our images to these networks, we resize them to $256 \times 256$. The output size of the generator network would be of the same size as it's input ($256 \times 256 \times 3$). The output of the 
@@ -471,8 +545,41 @@ Figure \ref{fig:arial2times_word}. We see that although according to the origina
 \cite{cyclegan}, the generators of CycleGAN was engineered for good performance on the appearance changes and not the shape changes in particular, it is capturing the shape changes of the fonts reasonably nicely. 
 
 \subsection{Ablation}
+We perform ablation studies separately on different domains. The main parameters we use for our ablation studies are number of epochs, learning rate, weight of the \textit{cycle-consistency loss} $\lambda$ and use of the \textit{identity loss}.
 
+\subsubsection{$\mathbf{Apple \leftrightarrow Orange}$}
+\noindent\textbf{Number of epochs} We tried varying number of epochs as 200, 100 and 50. We found that number of epochs more than 
+50 does not really help, and the networks seem to be not learning much after that. We decided to keep it to 50. 
+
+\noindent\textbf{Learning Rate} We found that using a rate of 0.0002 sometimes possibly gets trapped in a local minima and the network starts learning to invert the images for the first transformation, as if it is looking for a shortcut to get back to the original image via the cyclic transformation. Figure \ref{fig:a2r_lr} demonstrates this.
+
+\noindent\textbf{Cycle-consistency weight $\lambda$ and Identity weight $\beta$} We tried with $\lambda$
+values of 10 and 5, and for this case 5 turned out to work better. With 10, we get a similar local minima-like inverted phenomena that we discussed above for the low learning rate. For $\beta$, we tried 
+with values 0 (exclude) and 1 (include), and 0 gave us better results.
+
+\subsubsection{$\mathbf{Summer \leftrightarrow Winter}$}
+\noindent\textbf{Number of epochs} Similarly for the $Apple \leftrightarrow Orange$ case, 50 turned out to be sufficient.
+
+\noindent\textbf{Learning Rate} For this case, a learning rate of 0.0002 gave us slightly better results than 0.0004.
+
+\noindent\textbf{Cycle-consistency weight $\lambda$ and Identity weight $\beta$} Again, we tried with 
+$\lambda$ values of 10 and 5, and for this case 10 turned out to work better. For $\beta$, we tried 
+with values 0 (exclude) and 1 (include), and 1 gave us better results. Just as the original authors \cite{cyclegan} had noticed, without the identity loss it changes the tint of the image a little bit. Figure \ref{fig:s2w_id} demonstrates this. 
+
+\subsubsection{Font Style Transfer}
+\noindent\textbf{Number of epochs} For single character uppercase $Arial \leftrightarrow Times$, we settle for an epoch number of 100, while for the full word transfer, we settle for 50.
+
+\noindent\textbf{Learning Rate} Again for this case, a learning rate of 0.0002 gave us slightly better results than 0.0004 as shown in Figurer \ref{fig:a2f_lr} and \ref{fig:a2f_w_lr}.
+
+\noindent\textbf{Cycle-consistency weight $\lambda$ and Identity weight $\beta$} Again, we tried with 
+$\lambda$ values of 10 and 5, and for this case 10 turned out to work better. For $\beta$, including it (value 1) gave us slightly better results as demonstrated in Figures \ref{fig:a2f_id} and \ref{fig:a2f_w_id}.
 %-------------------------------------------------------------------------
+
+\section{Conclusion and Future Work}
+
+In this paper, we have tried to regenerate CycleGAN \cite{cyclegan} from scratch, try
+out two of the already explored domains and finally apply it to font style transfer
+for single character and full words.
 
 {\small
 \bibliographystyle{ieee}
