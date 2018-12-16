@@ -247,7 +247,7 @@ for epoch in range(start_epoch, args.epochs):
         history['cyclic_loss'][epoch - start_epoch].append(cycle_loss)
         history['identity_loss'][epoch - start_epoch].append(identity_loss)
         history['gen_loss_total'][epoch - start_epoch].append(train_loss_gen)
-        history['disc_loss'][epoch - start_epoch].append(gen_loss)
+        history['disc_loss'][epoch - start_epoch].append(a_train_loss_disc + b_train_loss_disc)
         
         if (i + 1) % 100 == 0:
             gen_a.eval()
@@ -313,17 +313,3 @@ for epoch in range(start_epoch, args.epochs):
 
 with open('{}/full_history.pkl'.format(history_dir), 'wb') as f:
     pickle.dump(history, f)
-
-# apple2orange
-# lr = 0.0004, lambda = 5
-# lr = 0.0002, lambda = 5
-# lr = 0.0002, lambda = 10
-# summer2winter lr = 0.0002, lambda =10, id_lambda = 5
-# font lr=0.0002, lambda = 10
-
-#ablation
-# all iterartions
-#apple2orange cycle loss 5 10
-#summer2winter id loss
-#font id loss
-#learning rate?

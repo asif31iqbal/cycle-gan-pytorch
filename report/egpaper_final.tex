@@ -268,7 +268,7 @@ We essentially rebuilt the same network architecture as the original authors
 The generator architecture has been broken down into 3 segments - encoding, transformation
 and decoding. Note the use of reflection padding to reduce artifacts in the first and last layer of the
 generator network, as well as in the residual blocks in the middle. Instance normalization has been used
-just like the original paper.
+just like the original paper. The supplementary document shows the block diagram of the network architecture.
 
 \begin{table*}[ht!]  
 \begin{subtable}[h]{\textwidth}
@@ -562,7 +562,8 @@ discriminator is just a one single channel $30 \times 30$ feature map, which is 
 \subsection{Training}
 We train our networks on a GeForce 1080 GPU using the training data collected for $summer2winter$ and $apple2orange$, and also using the generated training data for our
 font style transfer. The original authors \cite{cyclegan} used 200 epochs and a learning rate of 0.0002, exponentially decaying the rate after first 100 epochs. We found after 
-quite a bit of experimentation that for the $apple \leftrightarrow orange$ and $summer \leftrightarrow winter$ cases, the networks effectively cease to learn after 50 - 60 epochs, so we train these for 50 epochs only, exponentially decaying the learning rate after 25 epochs. We do the same for the font style transfer for full words. However, for the single character font style transfer, given that we have less training data, we use 100 epochs, exponentially decaying the learning rate after 50 epochs. We use Adam optimizer and a batch size of 1. We initialize the weights with a Normal distribution with mean 0 and standard deviation of 0.02. Table \ref{table:train} shows a summary of the training times.
+quite a bit of experimentation that for the $apple \leftrightarrow orange$ and $summer \leftrightarrow winter$ cases, the networks effectively cease to learn after 50 - 60 epochs, so we train these for 50 epochs only, exponentially decaying the learning rate after 25 epochs. We do the same for the font style transfer for full words. However, for the single character font style transfer, given that we have less training data, we use 100 epochs, exponentially decaying the learning rate after 50 epochs. We use Adam optimizer and a batch size of 1. We initialize the weights with a Normal distribution with mean 0 and standard deviation of 0.02. Table \ref{table:train} shows a summary of the training times. The supplementary document shows the trend of losses
+over epochs for the generator loss, cycle-consistency loss, identity loss and discriminator loss.
 
 \begin{table}[ht!]  
 \begin{center}
