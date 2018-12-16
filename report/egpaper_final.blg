@@ -3,56 +3,49 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: egpaper_final.aux
 The style file: ieee.bst
 Database file #1: egbib.bib
-Warning--I didn't find a database entry for "cycle2"
-Warning--I didn't find a database entry for "21"
-Warning--I didn't find a database entry for "Authors14"
-Warning--I didn't find a database entry for "Authors14b"
-Warning--I didn't find a database entry for "Alpher02"
-Warning--I didn't find a database entry for "Alpher03"
-Warning--I didn't find a database entry for "Alpher04"
 Name 1 in "Y. Taigman, A. Polyak, and L. Wolf" has a comma at the end for entry rel18
 while executing---line 1073 of file ieee.bst
 Name 1 in "Y. Taigman, A. Polyak, and L. Wolf" has a comma at the end for entry rel18
 while executing---line 1116 of file ieee.bst
-You've used 28 entries,
+You've used 30 entries,
             2120 wiz_defined-function locations,
-            612 strings with 6991 characters,
-and the built_in function-call counts, 7999 in all, are:
-= -- 721
-> -- 566
+            606 strings with 7187 characters,
+and the built_in function-call counts, 8696 in all, are:
+= -- 781
+> -- 627
 < -- 0
-+ -- 222
-- -- 194
-* -- 516
-:= -- 1507
-add.period$ -- 84
-call.type$ -- 28
-change.case$ -- 181
++ -- 246
+- -- 216
+* -- 570
+:= -- 1639
+add.period$ -- 90
+call.type$ -- 30
+change.case$ -- 198
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 274
-empty$ -- 487
-format.name$ -- 194
-if$ -- 1552
+cite$ -- 30
+duplicate$ -- 294
+empty$ -- 521
+format.name$ -- 216
+if$ -- 1683
 int.to.chr$ -- 0
-int.to.str$ -- 28
-missing$ -- 26
-newline$ -- 143
-num.names$ -- 56
-pop$ -- 189
+int.to.str$ -- 30
+missing$ -- 28
+newline$ -- 153
+num.names$ -- 60
+pop$ -- 206
 preamble$ -- 1
-purify$ -- 153
+purify$ -- 168
 quote$ -- 0
-skip$ -- 203
+skip$ -- 217
 stack$ -- 0
-substring$ -- 140
-swap$ -- 28
+substring$ -- 150
+swap$ -- 30
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 112
+type$ -- 120
 warning$ -- 0
-while$ -- 56
-width$ -- 30
-write$ -- 280
+while$ -- 60
+width$ -- 32
+write$ -- 300
 (There were 2 error messages)

@@ -5,6 +5,11 @@ Y.~Aytar, L.~Castrejon, C.~Vondrick, H.~Pirsiavash, and A.~Torralba.
 \newblock Cross-modal scene networks.
 \newblock {\em PAMI}, 2016.
 
+\bibitem{gan3}
+S.~Azadi, M.~Fisher, V.~Kim, Z.~Wang, E.~Shechtman, and T.~Darrell.
+\newblock Multi-content gan for few-shot font style transfer.
+\newblock {\em CVPR}, 2014.
+
 \bibitem{rel16}
 K.~Bousmalis, N.~Silberman, D.~Dohan, D.~Erhan, and D.~Krishnan.
 \newblock Unsupervised pixel-level domain adaptation with generative
@@ -146,6 +151,11 @@ Z.~Yi, H.~Zhang, T.~Gong, Tan, and M.~Gong.
 R.~Zhang, P.~Isola, and A.~A. Efros.
 \newblock Colorful image colorization.
 \newblock {\em ECCV}, 2016.
+
+\bibitem{rel21}
+T.~Zhou, P.~Krahenbuhl, M.~Aubry, Q.~Huang, and A.~A. Efros.
+\newblock Learning dense correspondence via 3d-guided cycle consistency.
+\newblock {\em CVPR}, 2016.
 
 \bibitem{cyclegan}
 J.~Y. Zhu, T.~Park, P.~Isola, and A.~A. Efros.

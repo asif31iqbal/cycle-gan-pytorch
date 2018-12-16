@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{multirow}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{url}
@@ -90,7 +91,7 @@ $G : X \leftarrow Y$ such that the output $\hat{y} = G(x)$, $x \in X$, is indist
 images $y \in Y$ by an adversary trained to classify $\hat{y}$ apart from $y$ \cite{cyclegan}. However,
 as discussed in \cite{cyclegan} that there could be infinitely many mappings $G$ that will induce the same distribution over $\hat{y}$. Also, there is the problem of mode collapse \cite{gan1}, where all input images map to the same output image and the optimization fails to make progress.
 
-To tackle these problems, the CycleGAN \cite{cyclegan} authors leverage the notion of \textit{cycle consistency}, in the sense that if we transfer the font style of a character from Arial to Times New Roman, and then translate it back from Times New Roman to Arial, we should get back the original character. Mathematically, if we have a translator $G : X \leftarrow Y$ and another translator $F: Y \leftarrow X$, then G and F should be inverses of each other, and both mappings should be bijections. We apply this structural assumption by training both the mapping G and F simultaneously, and adding a cycle consistency loss \cite{cycle2} that encourages $F(G(x)) \approx x$ and $G(F(y)) \approx y$.
+To tackle these problems, the CycleGAN \cite{cyclegan} authors leverage the notion of \textit{cycle consistency}, in the sense that if we transfer the font style of a character from Arial to Times New Roman, and then translate it back from Times New Roman to Arial, we should get back the original character. Mathematically, if we have a translator $G : X \leftarrow Y$ and another translator $F: Y \leftarrow X$, then G and F should be inverses of each other, and both mappings should be bijections. We apply this structural assumption by training both the mapping G and F simultaneously, and adding a cycle consistency loss \cite{rel21} that encourages $F(G(x)) \approx x$ and $G(F(y)) \approx y$.
 
 The authors \cite{cyclegan} have applied this idea to a wide range of
 applications, like collection style transfer, object transfiguration, season
@@ -102,7 +103,8 @@ it to the domain of font style transfer. We limit ourselves to just two fonts - 
 Times New Roman. We try it on single uppercase black English characters and on 
 lowercase black English words. Although it is not difficult to get paired data for this 
 sort of font style transfers for well known fonts which are widely available, there are 
-unknown fonts, text and calligraphy styles that are available in the wild for which it is 
+unknown fonts, text and calligraphy styles that are available in the wild (like is posters or artistic
+drawings) for which it is 
 not easy to get paired data and applying the CycleGAN concept might be a good idea. 
 The attempt with known fonts in this paper is a baby step towards the possible 
 applicability of unknown font style transfers using cycle consistency.
@@ -125,7 +127,7 @@ Unlike these approaches, the CycleGAN concept does not rely on any task specific
 measurements. It's more of a general purpose framework.
 
 As mentioned in the original paper, the idea of cycle consistency also has quite a bit of a history. Of these 
-works, \cite{rel19}, \cite{rel20} and \cite{21} are the ones that are conceptually most similar to 
+works, \cite{rel19}, \cite{rel20} and \cite{rel21} are the ones that are conceptually most similar to 
 CycleGANs.
 
 Neural Style Transfer \cite{rel4, rel22, rel23} is another family of work for image to image translation, 
@@ -133,6 +135,13 @@ which synthesizes an image by combining the content of one image with the style 
 Again, this is a paired training concept while CycleGAN is unpaired.
 
 The primary focus of CycleGAN and hence also of this paper, is learning the mapping between two two image collection, rather than between two specific images, by trying to capture correspondence between higher-level appearance structures. We try to apply the same idea in case of font style transfer.
+
+There has been use of GANs specifically in font style transfer as well. The most important one seems to be
+the use of multi-content GAN \cite{gan3}. However, their main focus is taking partial observations of highly-
+stylized text and generalizing the observations to generate unobserved fonts. Our intent, however, in this paper is to apply the general framework of cycle consistency to font style transfer.
+
+In the remainder of this paper, we discuss the problem formulation, data collection, network architecture
+and experimentation in order.
 
 \section{Problem Formulation}
 
@@ -255,38 +264,94 @@ For the font style transfer, we have written python programs (included in the gi
 
 \section{Network Architecture}
 We essentially rebuilt the same network architecture as the original authors 
-\cite{cyclegan} have used. The architecture is shown in Figure \ref{fig:architecture}. 
-The numbers of channels at all intermediate stage have been shown in red, as well as 
-the kernel, stride and padding size in blue. If the type of padding is Reflection 
-padding, it has been used indicated in the figure in the corresponding blocks, 
-otherwise padding is done with 0 values everywhere else. 
+\cite{cyclegan} have used. The architecture is shown in Table \ref{table:architecture}.
+The generator architecture has been broken down into 3 segments - encoding, transformation
+and decoding. Note the use of reflection padding to reduce artifacts in the first and last layer of the
+generator network, as well as in the residual blocks in the middle. Instance normalization has been used
+just like the original paper.
 
-\begin{figure*}[!htb]
-     \centering
-     
-     \begin{subfigure}[b]{\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{generator}
-         \caption{Generator}
-         \label{fig:gen}
-     \end{subfigure}
-     \vfill
-     \begin{subfigure}[b]{0.6\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{res_block}
-         \caption{Resnet Block in Detail}
-         \label{fig:res}
-     \end{subfigure}
-     \vfill
-     \begin{subfigure}[b]{0.8\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{discriminator}
-         \caption{Discriminator}
-         \label{fig:disc}
-     \end{subfigure}
-        \caption{Network Architecture. The numbers in red refers to the number of output channels of each block. The letter-number combination in blue in form k\textit{x}s\textit{y}p\textit{z} beneath the blocks corresponds to the kernel size ($x$), stride ($y$) and padding ($z$). For example, k4s2p1 would mean a kernel size of $4 \times 4$, stride of 1 and padding of 1. If the padding is form $z-z$ , that means that a padding of $z$ is applied to the output as well (in addition to the input padding of $z$). The use of reflection padding has been indicated by the word Reflection in blue}
-        \label{fig:architecture}
-\end{figure*} 
+\begin{table*}[ht!]  
+\begin{subtable}[h]{\textwidth}
+\centering
+\begin{tabular}{ |c|c|c|c|c| } 
+ \hline
+ \textbf{Segment} & \textbf{Layer} & \textbf{Description} &  \textbf{Channels} \\
+ \hline
+ \multirow{3}{*}{Encoding} & Conv-Instance Norm-Relu & Kernel $7 \times 7$, Stride 1, \textbf{Reflection} Pad 3 & In:3 Out:64 \\
+ & Conv-Instance Norm-Relu & Kernel $3 \times 3$, Stride 2, Pad 1 & In:64 Out:128\\
+  & Conv-Instance Norm-Relu & Kernel $3 \times 3$, Stride 2, Pad 1 & In:128 Out:256 \\
+\hline
+Transformation & 9 Residual Blocks & See details in Table 1b & In:256 Out:256\\
+\hline
+ \multirow{3}{*}{Decoding} & DeConv-Instance Norm-Relu & Kernel $3 \times 3$, Stride 2, Pad 1, Output Pad 1 & In:256 Out:128\\ 
+ & DeConv-Instance Norm-Relu & Kernel $3 \times 3$, Stride 2, Pad 1, Output Pad 1 & In:128 Out:64\\ 
+  & Conv-Tanh & Kernel $7 \times 7$, Stride 1, \textbf{Reflection} Pad 3 & In:64 Out:3\\ 
+  \hline
+\end{tabular}
+\label{table:generator}
+\caption{Generator Architecture}
+\end{subtable}
+\begin{subtable}[h]{\textwidth}
+\centering
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ \textbf{Layer} & \textbf{Description} &  \textbf{Channels} \\
+ \hline
+Conv-Instance Norm-Relu & Kernel $3 \times 3$, Stride 1, \textbf{Reflection} Pad 1 & In:256 Out:256\\ 
+ Conv-Instance Norm & Kernel $3 \times 3$, Stride 1, \textbf{Reflection} Pad 1 & In:256 Out:256\\ 
+ \hline
+  \multicolumn{2}{|c|}{Add with input} & In:256 Out:256\\
+\hline
+\end{tabular}
+\label{table:res_block}
+\caption{Details of each residual block}
+\end{subtable}
+\begin{subtable}[h]{\textwidth}
+\centering
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ \textbf{Layer} & \textbf{Description} &  \textbf{Channels} \\
+ \hline
+Conv-LeakyRelu(0.2) & Kernel $4 \times 4$, Stride 2, Pad 1 &  In:256 Out:64\\ 
+ Conv-Instance Norm-LeakyRelu(0.2) & Kernel $4 \times 4$, Stride 2, Pad 1 &  In:64 Out:128\\
+ Conv-Instance Norm-LeakyRelu(0.2) & Kernel $4 \times 4$, Stride 2, Pad 1 &  In:128 Out: 256\\
+  Conv-Instance Norm-LeakyRelu(0.2) & Kernel $4 \times 4$, Stride 1, Pad 1 &  In:256 Out:512\\
+   Conv & Kernel $3 \times 3$, Stride 1, Pad 1 &  In:512 Out:1\\
+\hline
+\end{tabular}
+\label{table:discriminator}
+\caption{Discriminator Architecture}
+\end{subtable}
+\caption{Network Architecture Summary}
+\label{table:architecture}
+\end{table*}
+
+%\begin{figure*}[!htb]
+%     \centering
+%     
+%     \begin{subfigure}[b]{\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{generator}
+%         \caption{Generator}
+%         \label{fig:gen}
+%     \end{subfigure}
+%     \vfill
+%     \begin{subfigure}[b]{0.6\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{res_block}
+%         \caption{Resnet Block in Detail}
+%         \label{fig:res}
+%     \end{subfigure}
+%     \vfill
+%     \begin{subfigure}[b]{0.8\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{discriminator}
+%         \caption{Discriminator}
+%         \label{fig:disc}
+%     \end{subfigure}
+%        \caption{Network Architecture. The numbers in red refers to the number of output channels of each block. The letter-number combination in blue in form k\textit{x}s\textit{y}p\textit{z} beneath the blocks corresponds to the kernel size ($x$), stride ($y$) and padding ($z$). For example, k4s2p1 would mean a kernel size of $4 \times 4$, stride of 1 and padding of 1. If the padding is form $z-z$ , that means that a padding of $z$ is applied to the output as well (in addition to the input padding of $z$). The use of reflection padding has been indicated by the word Reflection in blue}
+%        \label{fig:architecture}
+%\end{figure*} 
 
 \begin{figure*}[!htb]
      \centering
@@ -488,17 +553,6 @@ otherwise padding is done with 0 values everywhere else.
      \label{fig:ablation3}
 \end{figure*}
 
-\subsection{Generator}
-The generator has 3 main segments - Encoding, Transformation an Decoding. Figure 
-\ref{fig:gen} The encoding part has 3 general convolutional
-layers each of which is a convolution followed by instance normalization \cite{cyclegan} and Relu.b The transformation part is a series of 9 residual 
-blocks (shown in more detail in Figure \ref{fig:res}). Finally, the decoding segment is a couple of general deconvolutional layer followed by a convolution+tanh(kernel size 7). Each general deconvolutional layer is a deconvolution followed by instance normalization and Relu. The details have been shown in Figure \ref{fig:gen}.
-
-\subsection{Discriminator}
-For the discriminator, we use the same $70 \times 70$ PatchGAN concept used in \cite{cyclegan}.
-It basically has 4 general convolutional layers. The first one is a convolution plus Leaky Relu, while the other three are convolution plus instance normalization plus Leaky Relu. These 4 layers are then followed by one single 
-convolution only layer. The details have been shown in red in Figure \ref{fig:disc}.
-
 Notice that both the generator and the discriminator networks are end-to-end fully convolutional. Before 
 feeding our images to these networks, we resize them to $256 \times 256$. The output size of the generator network would be of the same size as it's input ($256 \times 256 \times 3$). The output of the 
 discriminator is just a one single channel $30 \times 30$ feature map, which is compared against a $30 \times 30$ all 1's or all 0's tensor while calculating discriminator loss.
@@ -577,9 +631,19 @@ $\lambda$ values of 10 and 5, and for this case 10 turned out to work better. Fo
 
 \section{Conclusion and Future Work}
 
-In this paper, we have tried to regenerate CycleGAN \cite{cyclegan} from scratch, try
-out two of the already explored domains and finally apply it to font style transfer
-for single character and full words.
+In this paper, we have tried to regenerate CycleGAN \cite{cyclegan} from scratch, explore two of the already explored domains and finally apply it to font style transfer
+for single character and full words. We couldn't replicate all the possible domains
+and results that the original paper did because of time constraints. From the results
+we got, the attempt of applying it to font style transfer did look promising to some extent.
+However, there is still quite a lot of ablations and tunings that can be done - like possibly modifying
+the network architecture, using a different number of residual blocks (we used 9), trying out loss 
+functions other than $L_2$ and $L_1$ norms, trying out batch and group normalizations instead of instance 
+normalization etc. Also, our font and word images were all simple
+black ones with a plain white background, while real world posters and artistic drawings would
+contain fonts and backgrounds with varying colors and gradients, which is a definitely challenge
+to explore in the future.
+
+\noindent \textbf{Acknowledgements} Dr. Kosta Derpanis and Matthew Kowal.
 
 {\small
 \bibliographystyle{ieee}
