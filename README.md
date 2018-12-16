@@ -67,3 +67,8 @@ Arial to Times to Arial (word)
 Times to Arial to Times (word)
 ![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/arial2times_word/test_b_2_a_68_g.jpg "Times to Arial to Times 1")
 
+Loss trends over epochs (for Arial to Times to Arial (word)):
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/helper/generator_loss.png "Generator loss")
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/helper/cycle_loss.png "Cycle-consistency loss")
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/helper/identity_loss.png "Identity loss")
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/helper/discriminator_loss.png "Discriminator loss")
