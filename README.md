@@ -24,10 +24,11 @@ conda install jupyter
 
 apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, ukiyoe2photo, vangogh2photo, maps, cityscapes, facades, iphone2dslr_flower, ae_photos
 
-### Download the data
+### Repository and Data dowload
 - Clone this repository and cd to the root directory of the cloned repository
 - To download the datasets used in the original paper, execute `download.sh` with parameter which should be one of `apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, ukiyoe2photo, vangogh2photo, maps, cityscapes, facades, iphone2dslr_flower, ae_photos`. Note that for my experimentation I have only used `apple2orange` and `summer2winter_yosemite`.
 - The data for font style transfer that I used is already included in the report under `datasets/arial2times` and `datasets/arial2times_word`.
+- There are a couple of Jupyter Notebook file `cycle-gan.ipynb` and `image_generator.ipynb` that were used to do some local experimentation and font image generation, but those are not needed for the operational purposes of this repository. The main operational files are `train.py`, `test.py`, `utils.py` and `model.py`.
 
 ### Run training
 Once you have set up the virtual env, cloned the reposiotry and downloaded the data, you can now run training:
