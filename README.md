@@ -32,7 +32,7 @@ apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, u
 ### Run training
 Once you have set up the virtual env, cloned the reposiotry and downloaded the data, you can now run training:
 
-```python
+```
 # apple2orange
 python train.py --dataset apple2orange --epochs 50 --constant_lr_epochs 25 --lr 0.0004 --cycle_loss_lambda 5
 
@@ -46,7 +46,7 @@ Please note the full list of parameters in `train.py`
 
 ### Run testing
 
-```python
+```
 python test.py --dataset apple2orange
 python test.py --dataset summer2winter_yosemite
 python test.py --dataset arial2times_word
