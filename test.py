@@ -62,7 +62,7 @@ a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 gen_a.eval()
 gen_b.eval()
 
-save_dir = '{}/test_result/{}/lr002_l10_id'.format(args.root_dir, args.dataset)
+save_dir = '{}/test_result/{}'.format(args.root_dir, args.dataset)
 mkdir(save_dir)
 
 print('Starting generating b to a in batches of {}:'.format(args.batch_size))

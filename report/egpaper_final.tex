@@ -609,7 +609,7 @@ We perform ablation studies separately on different domains. The main parameters
 
 \noindent\textbf{Cycle-consistency weight $\lambda$ and Identity weight $\beta$} We tried with $\lambda$
 values of 10 and 5, and for this case 5 turned out to work better. With 10, we get a similar local minima-like inverted phenomena that we discussed above for the low learning rate. For $\beta$, we tried 
-with values 0 (exclude) and 1 (include), and 0 gave us better results.
+with values 0 (exclude altogether) and 5, and 0 gave us better results.
 
 \subsubsection{$\mathbf{Summer \leftrightarrow Winter}$}
 \noindent\textbf{Number of epochs} Similarly for the $Apple \leftrightarrow Orange$ case, 50 turned out to be sufficient.
@@ -618,7 +618,7 @@ with values 0 (exclude) and 1 (include), and 0 gave us better results.
 
 \noindent\textbf{Cycle-consistency weight $\lambda$ and Identity weight $\beta$} Again, we tried with 
 $\lambda$ values of 10 and 5, and for this case 10 turned out to work better. For $\beta$, we tried 
-with values 0 (exclude) and 1 (include), and 1 gave us better results. Just as the original authors \cite{cyclegan} had noticed, without the identity loss it changes the tint of the image a little bit. Figure \ref{fig:s2w_id} demonstrates this. 
+with values 0 (exclude altogether) and 5, and 1 gave us better results. Just as the original authors \cite{cyclegan} had noticed, without the identity loss it changes the tint of the image a little bit. Figure \ref{fig:s2w_id} demonstrates this. 
 
 \subsubsection{Font Style Transfer}
 \noindent\textbf{Number of epochs} For single character uppercase $Arial \leftrightarrow Times$, we settle for an epoch number of 100, while for the full word transfer, we settle for 50.
@@ -626,7 +626,7 @@ with values 0 (exclude) and 1 (include), and 1 gave us better results. Just as t
 \noindent\textbf{Learning Rate} Again for this case, a learning rate of 0.0002 gave us slightly better results than 0.0004 as shown in Figurer \ref{fig:a2f_lr} and \ref{fig:a2f_w_lr}.
 
 \noindent\textbf{Cycle-consistency weight $\lambda$ and Identity weight $\beta$} Again, we tried with 
-$\lambda$ values of 10 and 5, and for this case 10 turned out to work better. For $\beta$, including it (value 1) gave us slightly better results as demonstrated in Figures \ref{fig:a2f_id} and \ref{fig:a2f_w_id}.
+$\lambda$ values of 10 and 5, and for this case 10 turned out to work better. For $\beta$, including it (value 5) gave us slightly better results than excluding it as demonstrated in Figures \ref{fig:a2f_id} and \ref{fig:a2f_w_id}.
 %-------------------------------------------------------------------------
 
 \section{Conclusion and Future Work}

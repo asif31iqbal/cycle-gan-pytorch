@@ -111,7 +111,7 @@ a_fake_pool = ItemPool()
 b_fake_pool = ItemPool()
 
 
-ckpt_dir = '{}/checkpoints/{}/lr002_l5'.format(args.root_dir, args.dataset)
+ckpt_dir = '{}/checkpoints/{}'.format(args.root_dir, args.dataset)
 mkdir(ckpt_dir)
 try:
     ckpt = load_checkpoint(ckpt_dir)
@@ -135,7 +135,7 @@ b_test_real = torch.tensor(iter(b_test_loader).next()[0], requires_grad=False)
 a_test_real, b_test_real = cuda([a_test_real, b_test_real])
 
 history = {'gen_loss': [], 'cyclic_loss': [], 'identity_loss': [], 'gen_loss_total': [], 'disc_loss': []}
-history_dir = '{}/history/{}/lr002_l5'.format(args.root_dir, args.dataset)
+history_dir = '{}/history/{}'.format(args.root_dir, args.dataset)
 mkdir(history_dir)
 
 # train
@@ -243,11 +243,11 @@ for epoch in range(start_epoch, args.epochs):
                   % (epoch, i + 1, min(len(a_train_loader), len(b_train_loader)),
                      gen_loss, identity_loss, cycle_loss, train_loss_gen, a_train_loss_disc, b_train_loss_disc))
 
-        history['gen_loss'][epoch].append(gen_loss)
-        history['cyclic_loss'][epoch].append(cycle_loss)
-        history['identity_loss'][epoch].append(identity_loss)
-        history['gen_loss_total'][epoch].append(train_loss_gen)
-        history['disc_loss'][epoch].append(gen_loss)
+        history['gen_loss'][epoch - start_epoch].append(gen_loss)
+        history['cyclic_loss'][epoch - start_epoch].append(cycle_loss)
+        history['identity_loss'][epoch - start_epoch].append(identity_loss)
+        history['gen_loss_total'][epoch - start_epoch].append(train_loss_gen)
+        history['disc_loss'][epoch - start_epoch].append(gen_loss)
         
         if (i + 1) % 100 == 0:
             gen_a.eval()
@@ -263,7 +263,7 @@ for epoch in range(start_epoch, args.epochs):
                              b_test_real, a_test_fake, b_test_cycle],
                             dim=0).data / 2.0 + 0.5
 
-            save_dir = '{}/sample_images/{}/lr002_l5'.format(args.root_dir, args.dataset)
+            save_dir = '{}/sample_images/{}'.format(args.root_dir, args.dataset)
             mkdir(save_dir)
             torchvision.utils.save_image(pic,
                                          '{}/Epoch_({})_({}of{}).jpg'.format(save_dir,
