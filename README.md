@@ -26,7 +26,32 @@ apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, u
 
 ### Download the data
 - Clone this repository and cd to the root directory of the cloned repository
-- Execute `download.sh` with parameter which should be one of `apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, ukiyoe2photo, vangogh2photo, maps, cityscapes, facades, iphone2dslr_flower, ae_photos`. Note that for my experimentation I have only used `apple2orange` and `summer2winter_yosemite`.
+- To download the datasets used in the original paper, execute `download.sh` with parameter which should be one of `apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, ukiyoe2photo, vangogh2photo, maps, cityscapes, facades, iphone2dslr_flower, ae_photos`. Note that for my experimentation I have only used `apple2orange` and `summer2winter_yosemite`.
+- The data for font style transfer that I used is already included in the report under `datasets/arial2times` and `datasets/arial2times_word`.
+
+### Run training
+Once you have set up the virtual env, cloned the reposiotry and downloaded the data, you can now run training:
+
+```
+# apple2orange
+python train.py --dataset apple2orange --epochs 50 --constant_lr_epochs 25 --lr 0.0004 --cycle_loss_lambda 5
+
+# summer2winter_yosemite
+python train.py --dataset summer2winter_yosemite --epochs 50 --constant_lr_epochs 25 --lr 0.0002 --cycle_loss_lambda 10 --identity_loss_lambda 5
+
+# arial2times_word
+python train.py --dataset arial2times_word --epochs 50 --constant_lr_epochs 25 --lr 0.0002 --cycle_loss_lambda 10 --identity_loss_lambda 5
+```
+Please note the full list of parameters in `train.py`
+
+### Run testing
+
+``
+python test.py --dataset apple2orange
+python test.py --dataset summer2winter_yosemite
+python test.py --dataset arial2times_word
+```
+
 
 
 
