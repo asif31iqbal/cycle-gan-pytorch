@@ -53,6 +53,17 @@ python test.py --dataset summer2winter_yosemite
 python test.py --dataset arial2times_word
 ```
 
+Sample results below:
 
+Apple to Orange to Apple
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/apple2orange/test_a_2_b_33.jpg "Apple to Orange to Apple")
 
+Summer to Winter to Summer
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/summer2winter/test_a_2_b_220.jpg "Summer to Winter to Summer")
+
+Arial to Times to Arial (word)
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/arial2times_word/test_a_2_b_203_g.jpg "Arial to Times to Arial 1")
+
+Times to Arial to Times (word)
+![alt text](https://github.com/asif31iqbal/cycle-gan-pytorch/blob/master/report/images/arial2times_word/test_b_2_a_68_g.jpg "Times to Arial to Times 1")
 
